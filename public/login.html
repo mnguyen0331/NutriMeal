@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/login.css" />
+    <title>NutriMeal Log In</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="left-header">
+        <img id="nutrimeal-logo" src="images/logos/logo.png" alt="" />
+        NutriMeal
+      </div>
+      <div class="right-header">
+        <img src="images/logos/fblogo.png" alt="" />
+        <img src="images/logos/instalogo.png" alt="" />
+        <img src="images/logos/twittlogo.png" alt="" />
+      </div>
+    </header>
+
+    <div class="top-section">
+      <div class="intro-section">
+        <div id="intro-title">The Best Way to Plan Your Meals</div>
+        <div id="intro-paragraph">
+          Are you tired of planning what to eat and cook everyday? Do you want
+          to eat delicious meals while being nutritious? NutriMeal helps you
+          plan your meals while being fit for diet. They can give you
+          recommendations everyday and even organize for the entire week.You can
+          learn how to cook food from different cultures and adjust them to your
+          likings. You can even post the food you have cooked with your friends
+          and family. Food is one of the most important for a human being. With
+          us, you can be reassured of your meals and to have healthy and
+          nutritious diet.
+        </div>
+      </div>
+
+      <div id="login-box">
+        <div id="upper-login">Sign In</div>
+        <form id="lower-login">
+          <div class="input-container">
+            <input
+              type="text"
+              placeholder="Your Email Address"
+              id="userEmail"
+            />
+            <div id="email-error">Email cannot be empty!</div>
+          </div>
+
+          <div class="input-container">
+            <input
+              type="password"
+              placeholder="Your Password"
+              id="userPassWord"
+            />
+            <div id="password-error">Password cannot be empty!</div>
+          </div>
+          <div class="password-help-container">
+            <div class="showpassword-container">
+              <input type="checkbox" onclick="showPassWord()" />Show Password
+            </div>
+            <div class="forgotpassword-container">
+              <a href="#">Forgot Password?</a>
+            </div>
+          </div>
+          <div class="button-container">
+            <button type="submit">Sign in</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="how-it-work">
+      <h2 align="center">How it works</h2>
+      <table width="100%" align="center">
+        <tr align="center">
+          <td>
+            <a href="https://wiswasi.wixsite.com/nutrimeal/shop"
+              ><img
+                src="https://cdn-icons-png.flaticon.com/512/2082/2082045.png"
+            /></a>
+          </td>
+          <td>
+            <img src="https://cdn-icons-png.flaticon.com/512/186/186146.png" />
+          </td>
+          <td>
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/1005/1005758.png"
+            />
+          </td>
+          <td>
+            <img src="https://cdn-icons-png.flaticon.com/512/833/833634.png" />
+          </td>
+        </tr>
+        <tr align="center">
+          <td><h3>Choose your meals</h3></td>
+          <td><h3>Learn to cook</h3></td>
+          <td><h3>Buy Ingredients</h3></td>
+          <td><h3>Eat and Repeat</h3></td>
+        </tr>
+        <tr align="center" valign="top">
+          <td><p>Rotating menus from different cultures</p></td>
+          <td><p>Watch our videos and learn to cook</p></td>
+          <td><p>Choose and buy all the fresh ingredients</p></td>
+          <td>
+            <p>Change and customise meals, skip a week or cancel anytime</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="what-others-say">
+      <h2 align="center">What Others are Saying</h2>
+      <table width="100%" align="center">
+        <tr align="center">
+          <td>
+            <img src="https://cdn-icons-png.flaticon.com/512/991/991986.png" />
+          </td>
+          <td>
+            <img src="https://cdn-icons-png.flaticon.com/512/991/991986.png" />
+          </td>
+          <td>
+            <img src="https://cdn-icons-png.flaticon.com/512/991/991986.png" />
+          </td>
+        </tr>
+        <tr align="center" valign="top">
+          <td><p>It is great</p></td>
+          <td><p>Tasty recipes</p></td>
+          <td><p>Clear instructions</p></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="contact-us">
+      <h2><u>Contact Us</u></h2>
+      <div class="contact-info">
+        <img src="https://cdn-icons-png.flaticon.com/512/1433/1433265.png" />
+        <h4>Address</h4>
+        <p>
+          2624 Time Ave, 92851,<br />
+          Fullerton, California
+        </p>
+      </div>
+      <div class="contact-info">
+        <img src="https://cdn-icons-png.flaticon.com/512/1433/1433265.png" />
+        <h4>Phone Number</h4>
+        <p>714-322-0987</p>
+      </div>
+      <div class="contact-info">
+        <img src="https://cdn-icons-png.flaticon.com/512/1433/1433265.png" />
+        <h4>Email</h4>
+        <p><a href="mailto:Scrum7@gmail.com">Srum7@gmail.com</a></p>
+      </div>
+    </div>
+
+    <footer>
+      <div>&copy; NutriMeal 2022</div>
+      <div class="footer-info">Accessibility</div>
+      <div class="footer-info">Terms and Conditions</div>
+      <div class="footer-info">Privacy Policy</div>
+      <div class="footer-info">All rights reserved</div>
+    </footer>
+
+    <script src="login.js"></script>
+  </body>
+</html>
