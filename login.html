@@ -11,6 +11,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/login.css" />
+    <link rel="stylesheet" href="styles/home.css" />
+    <link rel="stylesheet" href="styles/header.css" />
     <title>NutriMeal Log In</title>
   </head>
 
@@ -45,14 +47,14 @@
 
       <div id="login-box">
         <div id="upper-login">Sign In</div>
-        <form id="lower-login">
+        <form id="lower-login" action="home.html">
           <div class="input-container">
             <input
               type="text"
               placeholder="Your Email Address"
               id="userEmail"
+              required
             />
-            <div id="email-error">Email cannot be empty!</div>
           </div>
 
           <div class="input-container">
@@ -60,8 +62,8 @@
               type="password"
               placeholder="Your Password"
               id="userPassWord"
+              required
             />
-            <div id="password-error">Password cannot be empty!</div>
           </div>
           <div class="password-help-container">
             <div class="showpassword-container">
