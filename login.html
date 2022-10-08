@@ -13,18 +13,20 @@
     <link rel="stylesheet" href="styles/login.css" />
     <title>NutriMeal Log In</title>
   </head>
+
   <body>
     <header>
       <div class="left-header">
-        <img src="images/logo.png" alt="" />
+        <img id="nutrimeal-logo" src="images/logos/logo.png" alt="" />
         NutriMeal
       </div>
       <div class="right-header">
-        <img src="images/fblogo.png" alt="" />
-        <img src="images/instalogo.png" alt="" />
-        <img src="images/twittlogo.png" alt="" />
+        <img src="images/logos/fblogo.png" alt="" />
+        <img src="images/logos/instalogo.png" alt="" />
+        <img src="images/logos/twittlogo.png" alt="" />
       </div>
     </header>
+
     <div class="top-section">
       <div class="intro-section">
         <div id="intro-title">The Best Way to Plan Your Meals</div>
@@ -40,58 +42,62 @@
           nutritious diet.
         </div>
       </div>
+
       <div id="login-box">
         <div id="upper-login">Sign In</div>
-        <div id="lower-login">
+        <form id="lower-login">
           <div class="input-container">
-            <input type="text" / placeholder="Your Email Address">
+            <input
+              type="text"
+              placeholder="Your Email Address"
+              id="userEmail"
+            />
+            <div id="email-error">Email cannot be empty!</div>
           </div>
+
           <div class="input-container">
-            <input type="password" / placeholder="Your Password">
+            <input
+              type="password"
+              placeholder="Your Password"
+              id="userPassWord"
+            />
+            <div id="password-error">Password cannot be empty!</div>
           </div>
           <div class="password-help-container">
             <div class="showpassword-container">
-              <input type="checkbox" />Show Password
+              <input type="checkbox" onclick="showPassWord()" />Show Password
             </div>
             <div class="forgotpassword-container">
               <a href="#">Forgot Password?</a>
             </div>
           </div>
-          <div class="button-container"><button>Sign in</button></div>
-        </div>
+          <div class="button-container">
+            <button type="submit">Sign in</button>
+          </div>
+        </form>
       </div>
     </div>
-    <div class="How it works">
+
+    <div class="how-it-work">
       <h2 align="center">How it works</h2>
       <table width="100%" align="center">
         <tr align="center">
           <td>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/2082/2082045.png"
-              width="100"
-              height="100"
-            />
+            <a href="https://wiswasi.wixsite.com/nutrimeal/shop"
+              ><img
+                src="https://cdn-icons-png.flaticon.com/512/2082/2082045.png"
+            /></a>
           </td>
           <td>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/186/186146.png"
-              width="100"
-              height="100"
-            />
+            <img src="https://cdn-icons-png.flaticon.com/512/186/186146.png" />
           </td>
           <td>
             <img
               src="https://cdn-icons-png.flaticon.com/512/1005/1005758.png"
-              width="100"
-              height="100"
             />
           </td>
           <td>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/833/833634.png"
-              width="100"
-              height="100"
-            />
+            <img src="https://cdn-icons-png.flaticon.com/512/833/833634.png" />
           </td>
         </tr>
         <tr align="center">
@@ -111,30 +117,18 @@
       </table>
     </div>
 
-    <div class="What others say">
+    <div class="what-others-say">
       <h2 align="center">What Others are Saying</h2>
       <table width="100%" align="center">
         <tr align="center">
           <td>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/991/991986.png"
-              width="100"
-              height="100"
-            />
+            <img src="https://cdn-icons-png.flaticon.com/512/991/991986.png" />
           </td>
           <td>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/991/991986.png"
-              width="100"
-              height="100"
-            />
+            <img src="https://cdn-icons-png.flaticon.com/512/991/991986.png" />
           </td>
           <td>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/991/991986.png"
-              width="100"
-              height="100"
-            />
+            <img src="https://cdn-icons-png.flaticon.com/512/991/991986.png" />
           </td>
         </tr>
         <tr align="center" valign="top">
@@ -145,57 +139,36 @@
       </table>
     </div>
 
-    <div class="Contact Us">
-      <table width="100%">
-        <tr>
-          <td align="left" width="40%">
-            <h2><u>Contact US</u></h2>
-          </td>
-
-          <td>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/1433/1433265.png"
-              width="20"
-              height="20"
-            />
-            <h4>Address</h4>
-            <p>
-              2624 Time Ave, 92851,<br />
-              Fullerton, California
-            </p>
-          </td>
-          <td>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/1433/1433265.png"
-              width="20"
-              height="20"
-            />
-            <h4>Phone Number</h4>
-            <p>714-322-0987</p>
-          </td>
-
-          <td>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/1433/1433265.png"
-              width="20"
-              height="20"
-            />
-            <h4>Email</h4>
-            <p><a href="mailto:Scrum7@gmail.com">Srum7@gmail.com</a></p>
-          </td>
-        </tr>
-      </table>
+    <div class="contact-us">
+      <h2><u>Contact Us</u></h2>
+      <div class="contact-info">
+        <img src="https://cdn-icons-png.flaticon.com/512/1433/1433265.png" />
+        <h4>Address</h4>
+        <p>
+          2624 Time Ave, 92851,<br />
+          Fullerton, California
+        </p>
+      </div>
+      <div class="contact-info">
+        <img src="https://cdn-icons-png.flaticon.com/512/1433/1433265.png" />
+        <h4>Phone Number</h4>
+        <p>714-322-0987</p>
+      </div>
+      <div class="contact-info">
+        <img src="https://cdn-icons-png.flaticon.com/512/1433/1433265.png" />
+        <h4>Email</h4>
+        <p><a href="mailto:Scrum7@gmail.com">Srum7@gmail.com</a></p>
+      </div>
     </div>
-    <div class="Privacy">
-      <table>
-        <tr>
-          <td width="40%"><h1>NutriMeal</h1></td>
-          <td><p>Accessibility</p></td>
-          <td><p>Terms and Conditions</p></td>
-          <td><p>Privacy Policy</p></td>
-          <td><p>@2022. All rights reserved</p></td>
-        </tr>
-      </table>
-    </div>
+
+    <footer>
+      <div>&copy; NutriMeal 2022</div>
+      <div class="footer-info">Accessibility</div>
+      <div class="footer-info">Terms and Conditions</div>
+      <div class="footer-info">Privacy Policy</div>
+      <div class="footer-info">All rights reserved</div>
+    </footer>
+
+    <script src="login.js"></script>
   </body>
 </html>
