@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    font-family: roboto, Arial;
+}
+
+.top-section {
+    margin: 80px 80px;
+    display: grid;
+    grid-template-columns: 2fr 1fr
+}
+
+.intro-section {
+    margin-right: 80px;
+}
+
+#intro-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+#intro-paragraph {
+    font-size: 15px;
+    color: grey;
+    line-height: 2.0;
+}
+
+.how-it-work, .what-others-say, .contact-us {
+    border-bottom: 2px solid rgb(170, 169, 169);
+    padding-bottom: 40px;
+}
+
+.how-it-work img, .what-others-say img {
+    width: 100px;
+    height: 100px;
+}
+
+.how-it-work h2 {
+    border-top: 2px solid rgb(170, 169, 169);
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.what-others-say h2 {
+    margin-top: 40px;
+}
+
+.contact-us {
+    padding-left: 40px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+
+.contact-us img {
+    width: 20px;
+    height: 20px;
+}
+
+footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-info {
+    font-size: 14px;
+    color: lightgray;
+    text-decoration: underline;
+    margin-left: 30px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .top-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .intro-section {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 40px;
+    }
+    
+}
