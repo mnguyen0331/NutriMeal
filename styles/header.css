@@ -4,6 +4,7 @@ header {
     flex-direction: row;
     justify-content: space-evenly;
     border-bottom: 2px solid rgb(170, 169, 169);
+    background-color: #FFFFE0;
 }
 
 .left-header {

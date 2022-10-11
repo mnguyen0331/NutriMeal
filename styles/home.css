@@ -53,6 +53,7 @@ body {
     background-color: aliceblue;
     border-top: 3px solid black;
     border-bottom: 3px solid black;
+    z-index: 100;
 }
 
 .How-images
@@ -99,6 +100,7 @@ body {
     padding: 50px;
     background-color:antiquewhite;
     border-top: 3px solid black;
+    z-index: 100;
 }
 
 .Contact
@@ -132,29 +134,6 @@ body {
 .Address , .Phone, .Email
 {
     padding: 50px;
-}
-
-.bottom-fotter
-{
-    display: flex;
-    align-items: center;
-    clear: both;
-    margin-bottom: 30px;
-    padding-top: 30px;
-}
-
-.fotter-items
-{
-    display: flex;
-    width: 100%;
-    margin-right: 50px;
-}
-
-.fotter-items div{
-    font-size: 20px;
-    justify-content: space-evenly;
-    width: 300%;
-    display: inline-flex;
 }
 
 @media only screen and (max-width: 1000px) {
