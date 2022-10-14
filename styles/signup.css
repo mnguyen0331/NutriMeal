@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    font-family: roboto, Arial;
+}
+
+.wrapper {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-box {
+    margin-top: 20px;
+    border: 2px solid lightcoral;
+    width: 700px;
+}
+
+#signup-title {
+    text-align: center;
+    padding: 10px 0px;
+    background-color: #6495ed;
+    color: azure;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+#signup-form {
+    margin-left: 10px;
+}
+
+.form-element {
+    display: inline-block;
+    padding: 0px 10px 10px 0px;
+}
+
+.form-element label {
+    font-size: 15px;
+}
+
+.form-element i {
+    margin-left: -25px;
+    cursor: pointer;
+}
+
+#password-requirements {
+    background: #f1f1f1;
+    padding-left: 80px;
+    margin: 10px 0px 10px 0px;
+    display: none;
+}
+
+#requirement-title {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+#password-requirements p {
+    margin: 0;
+    padding: 0px 0px 2px 30px;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: green;
+}
+  
+.valid:before {
+    position: relative;
+    left: -30px;
+    content: "✔";
+}
+  
+  /* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+    color: red;
+}
+  
+.invalid:before {
+    position: relative;
+    left: -30px;
+    content: "✖";
+}
+
+
+.form-element input, .form-element select {
+    width: 200px;
+    padding: 2px 0px 2px 6px;
+    font-size: 15px;
+    border: 2px solid rgb(230, 227, 227);
+    border-radius: 4px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-element input:focus, .form-element select:focus {
+    border-color: #6495ed;
+}
