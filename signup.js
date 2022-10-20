@@ -1,9 +1,6 @@
 const togglePassword = document.querySelector('#togglePassword');
 const password = document.querySelector('#password');
 
-console.log(togglePassword);
-console.log(password);
-
 togglePassword.addEventListener('click', function () {
     const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
     password.setAttribute('type',type);
@@ -62,7 +59,7 @@ password.onkeyup = function() {
     }
 
     // Validate special char
-    const specials = /[@,#,$]/g;
+    const specials = /[!,@,#,$,%,&,_]/g; // Not numeric and not letters
     if(password.value.match(specials)) {
         special.classList.remove("invalid");
         special.classList.add("valid");
@@ -81,4 +78,32 @@ password.onkeyup = function() {
         length.classList.remove("valid");
         length.classList.add("invalid");
     }
+}
+
+// Display allergies selection if user select yes
+const allergiesAnswer = document.querySelector('#allergies-answer');
+const allergiesSelection = document.querySelector('#food-allergy-selection');
+
+const displayWhenSelected = (source, value, target) => {
+    const selectedIndex = source.selectedIndex;
+    console.log(selectedIndex);
+    const isSelected = source[selectedIndex].value === value;
+    target.classList[isSelected
+        ? "add"
+        : "remove"
+    ]("show");
+};
+
+allergiesAnswer.addEventListener("change", (evt) =>
+    displayWhenSelected(allergiesAnswer, "yes", allergiesSelection)
+);
+
+
+const signupForm = document.querySelector('#signup-form');
+
+// Prevent default form submit
+signupForm.addEventListener('submit', onSubmit);
+
+function onSubmit(e) {
+    e.preventDefault();
 }
