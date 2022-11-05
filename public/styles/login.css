@@ -3,86 +3,30 @@ body {
     font-family: roboto, Arial;
 }
 
-header {
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    border-bottom: 2px solid rgb(170, 169, 169);
-}
-
-.left-header {
-    margin-left: 50px;
+.wrapper {
     display: flex;
     align-items: center;
-    font-size: 22px;
-    font-weight: bold;
-    width: 100%;
+    justify-content: center;
+    padding-top: 100px;
 }
-
-#nutrimeal-logo {
-    height: 40px;
-    mix-blend-mode: multiply;
-    margin-right: 5px;
-}
-
-.right-header {
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    width: 100%;
-    margin-right: 50px;
-}
-
-.right-header img {
-    height: 30px;
-    margin-right: 20px;
-}
-
-.top-section {
-    margin: 80px 80px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-.intro-section {
-    width: 800px;
-    margin-right: 80px;
-}
-
-#intro-title {
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 20px;
-}
-
-#intro-paragraph {
-    font-size: 15px;
-    color: grey;
-    line-height: 2.0;
-}
-
 #login-box {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 0;
-    flex-shrink: 0;
     border: 2px solid grey;
     border-radius: 4px;
-    width: 350px;
+    width: 400px;
+    height: 400px;
+    z-index: 100;
 }
 
-#upper-login {
+#login-title {
     background-color:#72f2c9;
     text-align: center;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
     color: rgb(89, 88, 88);
     padding: 20px;
 }
 
-#lower-login {
+#login-form {
     padding-top: 20px;
     position: relative;
 }
@@ -93,18 +37,9 @@ header {
     margin-right: 40px;
 }
 
-#email-error, #password-error {
-    font-size: 14px;
-    font-weight: lighter;
-    margin-top: 10px;
-    margin-left: 20px;
-    color: red;
-    display: none;
-}
-
 .input-container input {
     width: 100%;
-    height: 30px;
+    height: 40px;
     border: 2px solid rgb(173, 170, 170);
     box-shadow: inset 1px 2px 3px rgba(0,0,0,0.05);
     border-radius: 5px;
@@ -120,92 +55,59 @@ header {
     justify-content: space-between;
 }
 
-.showpassword-container {
+.showpassword-container, .forgotpassword-container a  {
     font-size: 12px;
-    color: grey;
-}
-
-.forgotpassword-container {
-    font-size: 12px;
+    color: black;
+    font-weight: 100;
 }
 
 .button-container {
     margin: 20px;
 }
 
-#lower-login button {
+#login-form button {
     width: 100%;
-    height: 30px;
+    height: 40px;
     background-color: #FDCA01;
     border-radius: 4px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
     cursor: pointer;
     transition: .5s;
 }
 
-#lower-login button:hover {
-    background-color: #ebbe0a;
+#login-form button:hover {
+    background-color: black;
+    color: #fff;
 }
 
-@media only screen and (max-width: 1000px) {
-    .top-section {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .intro-section {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 40px;
-    }
-    
-}
-
-.how-it-work, .what-others-say, .contact-us {
-    border-bottom: 2px solid rgb(170, 169, 169);
-    padding-bottom: 40px;
-}
-
-.how-it-work img, .what-others-say img {
-    width: 100px;
-    height: 100px;
-}
-
-.how-it-work h2 {
-    border-top: 2px solid rgb(170, 169, 169);
-    padding-top: 40px;
-    padding-bottom: 20px;
-}
-
-.what-others-say h2 {
-    margin-top: 40px;
-}
-
-.contact-us {
-    padding-left: 40px;
-    margin-top: 40px;
+.bottom-section {
+    font: roboto;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;    
+    margin-top: 25px;
 }
 
-.contact-us img {
-    width: 20px;
-    height: 20px;
+.create-account {
+    margin-top: 10px;
 }
 
-footer {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
+.new-customer {
+    font-size: 16px;
 }
 
-.footer-info {
-    font-size: 14px;
-    color: lightgray;
-    text-decoration: underline;
-    margin-left: 30px;
+.create-account a {
+    color: black;
+    font-size: 16px;
+    transition: .5s;
 }
+
+.create-account a:hover, .forgotpassword-container a:hover {
+    color: blue;
+}
+
+

@@ -1,0 +1,36 @@
+header {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-bottom: 2px solid rgb(170, 169, 169);
+    background-color: #FFFFE0;
+}
+
+.left-header {
+    margin-left: 50px;
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    width: 100%;
+}
+
+#nutrimeal-logo {
+    height: 40px;
+    mix-blend-mode: multiply;
+    margin-right: 5px;
+}
+
+.right-header {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 100%;
+    margin-right: 50px;
+}
+
+.right-header img {
+    height: 30px;
+    margin-right: 20px;
+}

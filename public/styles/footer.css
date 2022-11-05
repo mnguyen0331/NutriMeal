@@ -1,0 +1,19 @@
+
+.footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    border-top: 2px solid rgb(170, 169, 169);
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    background-color: #d3d3d3;
+    z-index: 0;
+}
+
+.footer div {
+    font-size: 14px;
+    color: black;
+    font-weight: 100;
+}
