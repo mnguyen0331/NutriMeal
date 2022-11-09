@@ -38,13 +38,30 @@ const sendHttpRequest = (method, url, data) => {
 
 //function to get data
 const getData = () => {
-    //send request
+    //send request (this url is for testing api calls)
     sendHttpRequest('GET', 'https://reqres.in/api/users')
     //wait for response...
     .then(responseData => {
-        console.log(responseData);
+        console.log(responseData)
+        return responseData;
     });
 }
+
+//load contents of data retrieved
+const loadContent = (responseData) => {
+    const mainContent = document.getElementById("mainContent");
+    for (let i = 0; i < responseData.data.length; i++){
+        const element = document.createElement('div')
+        element.innerHTML = responseData.data[i].id + ', ' + responseData.data[i].email + ', ' + responseData.data[i].first_name + ' ' + responseData.data[i].last_name
+        mainContent.appendChild(element)
+    }
+};
+
+//main function to GET api and display it onto test.html
+sendHttpRequest('GET', 'https://reqres.in/api/users').then(responseData=>{
+    console.log(responseData);
+    loadContent(responseData);
+})
 
 //add test button
 const button = document.getElementById('test')
