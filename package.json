@@ -1,0 +1,29 @@
+{
+  "name": "nutrimeal",
+  "version": "1.0.0",
+  "description": "NutriMeal is a website application that helps users plan and order nutritious meals from home. NutriMeal also has cooking instructions for various meals (both text and videos). Users can also share their experiences with others by using the comment section on the website.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mnguyen0331/NutriMeal.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mnguyen0331/NutriMeal/issues"
+  },
+  "homepage": "https://github.com/mnguyen0331/NutriMeal#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "mongodb": "^4.11.0",
+    "mongoose": "^6.6.7",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
+  }
+}
