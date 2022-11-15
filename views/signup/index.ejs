@@ -1,0 +1,38 @@
+<div class="wrapper">
+  <div id="have-account">
+    Already have an account? Sign in <a href="/signin">here!</a>
+  </div>
+  <div class="signup-box">
+    <div id="signup-title">Create new account</div>
+    <form id="signup-form" action="/signup" method="post">
+      <div class="form-element">
+        <label for="">Email:</label>
+        <input type="email" name="email" required />
+      </div>
+      <div class="form-element">
+        <label for="">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!,@,#,$,%,&,_]).{9,}"
+          title="Must contain at least one number,one uppercase, one lowercase, one special, no space and length 9 or more"
+          required
+        />
+        <i class="bi-eye-slash" id="togglePassword"></i>
+      </div>
+      <div id="password-requirements">
+        <div id="requirement-title">A valid password must have:</div>
+        <p id="number" class="invalid">at least 1 number</p>
+        <p id="lower" class="invalid">at least 1 lowercase letter</p>
+        <p id="upper" class="invalid">at least 1 uppercase letter</p>
+        <p id="special" class="invalid">at least 1 special character</p>
+        <p id="length" class="invalid">minimum length of 9 characters</p>
+        <p id="space" class="valid">No space</p>
+      </div>
+      <div class="button-container">
+        <button type="submit" id="signup-button">Create</button>
+      </div>
+    </form>
+  </div>
+</div>

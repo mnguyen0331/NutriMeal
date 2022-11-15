@@ -1,0 +1,7 @@
+@import 'shared/header.css';
+@import 'shared/footer.css';
+
+body {
+    margin: 0;
+    font-family: roboto, Arial;
+}

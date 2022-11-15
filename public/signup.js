@@ -1,9 +1,6 @@
 const togglePassword = document.querySelector('#togglePassword');
 const password = document.querySelector('#password');
 
-console.log(togglePassword);
-console.log(password);
-
 togglePassword.addEventListener('click', function () {
     const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
     password.setAttribute('type',type);
@@ -15,6 +12,7 @@ const lower = document.querySelector('#lower');
 const upper = document.querySelector('#upper');
 const special = document.querySelector('#special');
 const length = document.querySelector('#length');
+const space = document.querySelector('#space');
 
 // Display password requirements when user click on password field
 password.onfocus = function() {
@@ -62,7 +60,7 @@ password.onkeyup = function() {
     }
 
     // Validate special char
-    const specials = /[@,#,$]/g;
+    const specials = /[!,@,#,$,%,&,_]/g; // Not numeric and not letters
     if(password.value.match(specials)) {
         special.classList.remove("invalid");
         special.classList.add("valid");
@@ -71,6 +69,17 @@ password.onkeyup = function() {
         special.classList.remove("valid");
         special.classList.add("invalid");
     }
+
+    // No space allowed
+    const spaces = /\s/g;
+    if(password.value.match(spaces)) {
+        space.classList.remove("valid");
+        space.classList.add("invalid"); 
+    }
+    else {
+        space.classList.remove("invalid");
+        space.classList.add("valid");
+    } 
 
     // Validate length
     if(password.value.length >= 9) {
@@ -82,3 +91,21 @@ password.onkeyup = function() {
         length.classList.add("invalid");
     }
 }
+
+// Display allergies selection if user select yes
+const allergiesAnswer = document.querySelector('#allergies-answer');
+const allergiesSelection = document.querySelector('#food-allergy-selection');
+
+const displayWhenSelected = (source, value, target) => {
+    const selectedIndex = source.selectedIndex;
+    console.log(selectedIndex);
+    const isSelected = source[selectedIndex].value === value;
+    target.classList[isSelected
+        ? "add"
+        : "remove"
+    ]("show");
+};
+
+allergiesAnswer.addEventListener("change", (evt) =>
+    displayWhenSelected(allergiesAnswer, "yes", allergiesSelection)
+);
