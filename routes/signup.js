@@ -7,8 +7,8 @@ router.get('/', (req, res) => {
 })
 
 // Create new account
-router.post('/signup', (req, res) => {
-    res.send('SignUp complete')
+router.post('/', (req, res) => {
+    
 })
 
 module.exports = router

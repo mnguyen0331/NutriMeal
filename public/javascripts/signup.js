@@ -98,7 +98,6 @@ const allergiesSelection = document.querySelector('#food-allergy-selection');
 
 const displayWhenSelected = (source, value, target) => {
     const selectedIndex = source.selectedIndex;
-    console.log(selectedIndex);
     const isSelected = source[selectedIndex].value === value;
     target.classList[isSelected
         ? "add"
@@ -109,3 +108,9 @@ const displayWhenSelected = (source, value, target) => {
 allergiesAnswer.addEventListener("change", (evt) =>
     displayWhenSelected(allergiesAnswer, "yes", allergiesSelection)
 );
+
+const form = document.querySelector('#signup-form')
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+})

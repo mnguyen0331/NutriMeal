@@ -125,23 +125,61 @@
       <!-- Top 8 common food allergens (ref https://www.fda.gov/food/buy-store-serve-safe-food/food-allergies-what-you-need-know) -->
       <div id="food-allergy-selection">
         <div>Select all food allergies that you have:</div>
-        <div><input type="checkbox" name="milk" />Milk</div>
-        <div><input type="checkbox" name="eggs" />Eggs</div>
-        <div><input type="checkbox" name="fish" />Fish</div>
         <div>
-          <input type="checkbox" name="crustaceanShellfish" />Crustacean
-          shellfish (e.g., crab, lobster, shrimp)
+          <input type="checkbox" id="milk" name="allergen" value="milk" />
+          <label for="milk">Milk</label>
         </div>
         <div>
-          <input type="checkbox" name="treeNuts" />Tree Nuts (e.g., almonds,
-          walnuts, pecans)
+          <input type="checkbox" id="eggs" name="allergen" value="eggs" />
+          <label for="eggs">Eggs</label>
         </div>
-        <div><input type="checkbox" name="peanuts" />Peanuts</div>
-        <div><input type="checkbox" name="wheat" />Wheat</div>
-        <div><input type="checkbox" name="soybeans" />Soybeans</div>
         <div>
-          <input type="checkbox" />Others, please specify
-          <input type="text" />
+          <input type="checkbox" id="fish" name="allergen" value="fish" />
+          <label for="fish">Fish</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="crustaceanShellFish"
+            name="allergen"
+            value="crustaceanShellFish"
+          />
+          <label for="crustaceanShellFish"
+            >Crustaceanshellfish (e.g., crab, lobster, shrimp)</label
+          >
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="treeNuts"
+            name="allergen"
+            value="treeNuts"
+          />
+          <label for="treeNuts"
+            >Tree Nuts (e.g., almonds,walnuts, pecans)</label
+          >
+        </div>
+        <div>
+          <input type="checkbox" id="peanuts" name="allergen" value="peanuts" />
+          <label for="peanuts">Peanuts</label>
+        </div>
+        <div>
+          <input type="checkbox" id="wheat" name="allergen" value="wheat" />
+          <label for="wheat">Wheat</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="soybeans"
+            name="allergen"
+            value="soybeans"
+          />
+          <label for="soybeans">Soybeans</label>
+        </div>
+        <div>
+          <input type="checkbox" id="others" name="allergen" value="others" />
+          <label for="others">Others, please specify:</label>
+          <input type="text" id="othersValue" name="others" />
         </div>
       </div>
 
