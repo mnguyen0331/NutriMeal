@@ -15,23 +15,23 @@
       </div>
       <div class="form-element">
         <label for="">Phone Number:</label>
-        <input type="text" name="phoneNum" />
+        <input type="text" name="phoneNum" required />
       </div>
       <div class="form-element">
         <label for="">Street Address:</label>
-        <input type="text" name="streetAddress" />
+        <input type="text" name="streetAddress" required />
       </div>
       <div class="form-element">
         <label for="">City:</label>
-        <input type="text" name="city" />
+        <input type="text" name="city" required />
       </div>
       <div class="form-element">
         <label for="">Zipcode:</label>
-        <input type="text" name="zipcode" />
+        <input type="text" name="zipcode" required />
       </div>
       <div class="form-element">
         <label for="">State:</label>
-        <select name="state" id="state">
+        <select name="state" id="state" required>
           <option value="" selected="selected">Select a State</option>
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
@@ -116,7 +116,7 @@
       <div id="food-allergy-question">
         <label for="">Do you have food allergies?</label>
         <select name="allergies" id="allergies-answer" required>
-          <option value="" selected="selected">Select</option>
+          <option value="none" selected="selected">Select</option>
           <option value="yes">Yes</option>
           <option value="no">No</option>
         </select>
@@ -126,22 +126,22 @@
       <div id="food-allergy-selection">
         <div>Select all food allergies that you have:</div>
         <div>
-          <input type="checkbox" id="milk" name="allergen" value="milk" />
+          <input type="checkbox" id="milk" name="allergens" value="milk" />
           <label for="milk">Milk</label>
         </div>
         <div>
-          <input type="checkbox" id="eggs" name="allergen" value="eggs" />
+          <input type="checkbox" id="eggs" name="allergens" value="eggs" />
           <label for="eggs">Eggs</label>
         </div>
         <div>
-          <input type="checkbox" id="fish" name="allergen" value="fish" />
+          <input type="checkbox" id="fish" name="allergens" value="fish" />
           <label for="fish">Fish</label>
         </div>
         <div>
           <input
             type="checkbox"
             id="crustaceanShellFish"
-            name="allergen"
+            name="allergens"
             value="crustaceanShellFish"
           />
           <label for="crustaceanShellFish"
@@ -152,7 +152,7 @@
           <input
             type="checkbox"
             id="treeNuts"
-            name="allergen"
+            name="allergens"
             value="treeNuts"
           />
           <label for="treeNuts"
@@ -160,26 +160,33 @@
           >
         </div>
         <div>
-          <input type="checkbox" id="peanuts" name="allergen" value="peanuts" />
+          <input
+            type="checkbox"
+            id="peanuts"
+            name="allergens"
+            value="peanuts"
+          />
           <label for="peanuts">Peanuts</label>
         </div>
         <div>
-          <input type="checkbox" id="wheat" name="allergen" value="wheat" />
+          <input type="checkbox" id="wheat" name="allergens" value="wheat" />
           <label for="wheat">Wheat</label>
         </div>
         <div>
           <input
             type="checkbox"
             id="soybeans"
-            name="allergen"
+            name="allergens"
             value="soybeans"
           />
           <label for="soybeans">Soybeans</label>
         </div>
         <div>
-          <input type="checkbox" id="others" name="allergen" value="others" />
-          <label for="others">Others, please specify:</label>
-          <input type="text" id="othersValue" name="others" />
+          <input type="checkbox" id="other" name="allergens" value="other" />
+          <label for="other">Other, please specify:</label>
+          <div class="form-element">
+            <input type="text" id="otherAllergen" name="otherAllergen" />
+          </div>
         </div>
       </div>
 

@@ -109,8 +109,35 @@ allergiesAnswer.addEventListener("change", (evt) =>
     displayWhenSelected(allergiesAnswer, "yes", allergiesSelection)
 );
 
-const form = document.querySelector('#signup-form')
+const signupForm = document.querySelector('#signup-form');
+const allergensArray = signupForm.allergens
+const arrayLength = allergensArray.length
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault()
-})
+// Prevent default form submit
+signupForm.addEventListener('submit', (e) => {
+    const answer = allergiesAnswer.value
+    let allergensInput = []
+    // Store checkboxes to array
+    if (answer === 'yes') {
+        for (let i = 0; i < arrayLength; i++) {
+            if (allergensArray[i].checked) {
+                if (allergensArray[i].value !== 'other')
+                    allergensInput.push(allergensArray[i].value)
+                else {
+                    const otherAllergen = document.querySelector('#otherAllergen')
+                    allergensInput.push(otherAllergen.value)
+                }      
+            }   
+        }
+        if (allergensInput.length === 0) {
+            alert('Please select allergent')
+            e.preventDefault()
+        }
+    }
+    // Send array together with form elements
+    const hiddenInput = document.createElement('input')
+    hiddenInput.type = 'hidden'
+    hiddenInput.name = 'allergensInput'
+    hiddenInput.value = JSON.stringify(allergensInput)
+    signupForm.appendChild(hiddenInput)
+});
