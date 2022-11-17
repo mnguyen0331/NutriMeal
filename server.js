@@ -6,8 +6,6 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 const connectDB = require('./config/dbConn')
-const User = require('./models/User');
-const bcrypt = require('bcrypt');
 
 // Connect to MongoDB
 connectDB();
