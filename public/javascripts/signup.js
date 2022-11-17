@@ -112,8 +112,12 @@ allergiesAnswer.addEventListener("change", (evt) =>
 const signupForm = document.querySelector('#signup-form');
 const allergensArray = signupForm.allergens
 const arrayLength = allergensArray.length
+const otherAllergens = document.querySelector('#otherAllergens')
+function displayOtherInput(other) {
+    otherAllergens.style.display = other.checked ? "block" : "none"
+}
 
-// Prevent default form submit
+// Store allergies checkboxes into arrays
 signupForm.addEventListener('submit', (e) => {
     const answer = allergiesAnswer.value
     let allergensInput = []
@@ -124,13 +128,14 @@ signupForm.addEventListener('submit', (e) => {
                 if (allergensArray[i].value !== 'other')
                     allergensInput.push(allergensArray[i].value)
                 else {
-                    const otherAllergen = document.querySelector('#otherAllergen')
-                    allergensInput.push(otherAllergen.value)
+                    otherAllergens.value.split(",").forEach(element => {
+                        allergensInput.push(element.trim())
+                    });             
                 }      
-            }   
+            }
         }
         if (allergensInput.length === 0) {
-            alert('Please select allergent')
+            alert('Please check applicable allergens')
             e.preventDefault()
         }
     }
