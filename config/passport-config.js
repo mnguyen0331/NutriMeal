@@ -1,55 +1,38 @@
-const bcrypt = require('bcrypt');
-const LocalStragtegy = require('passport-local').Strategy
+const LocalStrategy = require('passport-local').Strategy
+const bcrypt = require('bcrypt')
+const User = require('../models/User')
 
- function initialize(passport, getUserByEmailorUsername, getUserById) {
-
-    //  CHECKS IF EMAIL EXIST AND IF PASSWORD IS CORRECT.
-    // EMAIL AND PASSWORD ARE PASS BY or SET BY PASSPORT
-    // AND THE ITS VALUES ARE WHAT IS PASSED BY REQ.BODY.EMAIL/PASSWORD 
-    // THIS CAN ALSO MEAN THAT THE 'email' VARIABLE IS 'usernameField:'
-    // THAT IS SET BY new LocalStragtegy
-    const authenticateUser = async (email, password, done) => {
-        // USER IS ACTUALLY THE EMAIL NAME
-        const query = await getUserByEmailorUsername(email)
-        console.log('Before query and query[0]')
-        console.log(query);
-        if (query == null) {
-            return done(null, false, {message: 'That user or email does not exist' })
+module.exports = function(passport) {
+  passport.use(
+    new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
+      // Match user
+      User.findOne({
+        email: email
+      }).then(user => {
+        if (!user) {
+          return done(null, false, { message: `${email} account does not exist` });
         }
-        try {
-            console.log('authenticateUser try block ran')
-            if (await bcrypt.compare(password, query.Password)) {
-                console.log('authenticateUser correct password')
-                const idToString = query._id.toString()
-                const user = {  id: idToString,
-                                username: query.UserName,
-                                email: query.Email,
-                                extra: "myextra",
-                                password: query.Password }
-                return done(null, user)
-            } else {
-                console.log('authenticateUser incorrect password')
-                return done(null, false, { message: 'Password incorrect' })
-            }
-        } catch (err) { return done(err) }
-    }
 
-    //TAKES IN TWO PARAMENTS - new LocalStragtegy & authenticateUser function
-    passport.use(new LocalStrategy({ usernameField: 'email' }, 
-    authenticateUser))
-
-    //IN THE FOLLOWING - usernameField == user 
-    //I DON'T NEED TO WORRY ABOUT THIS, I THINK. 
-    passport.serializeUser((user, done) => {
-        console.log("Hello from serializerUser")
-        console.log(user)
-        done(null, user.id.toString())
+        // Match password
+        bcrypt.compare(password, user.password, (err, isMatch) => {
+          if (err) throw err;
+          if (isMatch) {
+            return done(null, user);
+          } else {
+            return done(null, false, { message: 'Password incorrect' });
+          }
+        });
+      });
     })
-    passport.deserializeUser(async (id, done) => {
-        console.log('Hello from deserializerUserrr')
-        console.log(id)
-       return done(null, await getUserById(id))
-    })
-}
+  );
 
-module.exports = initialize
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+
+  passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+      done(err, user);
+    });
+  });
+};

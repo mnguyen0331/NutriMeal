@@ -1,12 +1,14 @@
+<% if (messages.error) { %> <%= messages.error %> <% } %>
 <div class="wrapper">
   <div id="signin-box">
     <div id="signin-title">Sign In</div>
     <form id="signin-form" action="/signin" method="post">
       <div class="input-container">
         <input
-          type="text"
+          type="email"
           placeholder="Your Email Address"
           id="userEmail"
+          name="email"
           required
         />
       </div>
@@ -16,6 +18,7 @@
           type="password"
           placeholder="Your Password"
           id="userPassWord"
+          name="password"
           required
         />
       </div>
@@ -27,8 +30,8 @@
           <a href="#">Forgot Password?</a>
         </div>
       </div>
-      <div class="button-container">
-        <button type="submit">Sign in</button>
+      <div style="text-align: center">
+        <button class="btn btn-signin" type="submit">Sign in</button>
       </div>
       <div class="bottom-section">
         <div class="new-customer">New Customer?</div>

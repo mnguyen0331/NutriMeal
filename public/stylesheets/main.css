@@ -1,5 +1,6 @@
 @import 'shared/header.css';
 @import 'shared/footer.css';
+@import 'shared/buttons.css';
 
 body {
     margin: 0;

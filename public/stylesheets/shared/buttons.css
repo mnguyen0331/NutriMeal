@@ -1,0 +1,35 @@
+.btn {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100px;
+    height: 50px;
+    transition: .5s;
+}
+
+.btn-signin {
+    background-color: #FDCA01;
+    width: 90%;
+}
+
+.btn-signin:hover {
+    background-color: black;
+    color: #fff;
+}
+
+.btn-signup {
+    color: white;
+    background-color: #6495ed;
+}
+
+.btn-signup:hover {
+    background-color:rgb(53, 53, 246);
+}
+
+.btn-logout {
+    background-color: #FDCA01;
+}

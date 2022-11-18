@@ -2,9 +2,10 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
 const bcrypt = require('bcrypt')
+const { checkNotAuthenticated } = require('../config/auth')
 
 // Show initial signup page
-router.get('/', (req, res) => {
+router.get('/', checkNotAuthenticated, (req, res) => {
     res.render('signup/index.ejs')
 })
 

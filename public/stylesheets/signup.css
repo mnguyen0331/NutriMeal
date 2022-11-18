@@ -113,26 +113,3 @@
     display: block;
 }
 
-.button-container {
-    margin-top: 20px;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-#signup-button {
-    width: 100px;
-    padding: 5px;
-    background-color: #6495ed;
-    border-radius: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 22px;
-    font-weight: bold;
-    text-align: center;
-    color: white;
-    cursor: pointer;
-    transition: .5s;
-}
-
-#signup-button:hover {
-    background-color:rgb(53, 53, 246);
-}
