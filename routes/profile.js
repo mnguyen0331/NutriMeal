@@ -4,7 +4,7 @@ const { checkAuthenticated } = require('../config/auth')
 
 // Render profile page with user's info
 router.get('/', checkAuthenticated, (req, res) => {
-    res.render('profile/index.ejs', {user: req.user})
+    res.render('profile/index', {user: req.user})
 })
 
 // Let user update their information

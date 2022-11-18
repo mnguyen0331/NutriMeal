@@ -3,7 +3,7 @@ const router = express.Router()
 
 // Show menu page
 router.get('/', (req, res) => {
-    res.render('menu/index.ejs')
+    res.render('menu/index')
 })
 
 

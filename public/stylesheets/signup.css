@@ -38,11 +38,11 @@
 }
 
 .form-element {
-    /* display: inline-block; */
     padding: 0px 15px 15px 0px;
 }
 
 .form-element i {
+    width: 500px;
     margin-left: -30px;
     cursor: pointer;
 }

@@ -6,7 +6,7 @@ const { checkNotAuthenticated } = require('../config/auth')
 
 // Show initial signup page
 router.get('/', checkNotAuthenticated, (req, res) => {
-    res.render('signup/index.ejs')
+    res.render('signup/index')
 })
 
 // Create new account
