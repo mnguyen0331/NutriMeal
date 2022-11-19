@@ -3,6 +3,10 @@
 @import 'shared/buttons.css';
 @import 'shared/form.css';
 
+:root {
+    scroll-behavior: auto !important;
+  }
+  
 body {
     margin: 0;
     font-family: roboto, Arial;

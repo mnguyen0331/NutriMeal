@@ -119,6 +119,7 @@ function displayOtherInput(other) {
 
 // Store allergies checkboxes into arrays
 signupForm.addEventListener('submit', (e) => {
+    e.preventDefault()
     const answer = allergiesAnswer.value
     let allergensInput = []
     // Store checkboxes to array
@@ -136,7 +137,6 @@ signupForm.addEventListener('submit', (e) => {
         }
         if (allergensInput.length === 0) {
             alert('Please check applicable allergens')
-            e.preventDefault()
         }
     }
     // Send array together with form elements

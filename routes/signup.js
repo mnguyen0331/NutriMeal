@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
     const duplicate = await User.findOne({ email: inputEmail }).exec()
     if (duplicate) {
         res.render('signup/index.ejs', {
-            errorMessage: `Email ${inputEmail} already exits!.`
+            error_msg: `Email ${inputEmail} already exits!`
         })
     }
     else {
@@ -37,11 +37,12 @@ router.post('/', async (req, res) => {
         })
         try {
             await user.save() // save user to DB
+            req.flash('success_msg', 'Create account successfully. You can now sign in below')
             res.redirect('/signin')
         } catch (error) {
             console.log(error)
             res.render('signup/index.ejs', {
-                errorMessage: 'Error creating account'
+                error_msg: 'Error creating account'
             })
         }
     }

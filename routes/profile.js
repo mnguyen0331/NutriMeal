@@ -26,9 +26,10 @@ router.put('/:id', async (req, res) => {
       allergies: req.body.allergens == '' ? "no" : "yes"
     }, {new : true})
     console.log(user)
-    res.render('profile/index', { user: user})
+    res.render('profile/index', { user: user, success_msg: 'Updating Successfully'})
   } catch (err) {
     console.log(err)
+    req.flash('error_msg', 'Error updating info')
     res.redirect('/profile')
   } 
 })
@@ -37,6 +38,7 @@ router.put('/:id', async (req, res) => {
 router.post('/logout', function(req, res, next) {
   req.logout(function(err) {
     if (err) { return next(err) }
+    req.flash('success_msg', 'Logging Out...')
     res.redirect('/signin')
   })
 })

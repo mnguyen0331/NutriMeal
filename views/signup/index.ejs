@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div id="have-account">
     Already have an account?
-    <a class="btn btn-secondary" href="/signin" role="button">Sign In</a>
+    <a class="btn btn-warning" href="/signin" role="button">Sign In</a>
   </div>
   <div class="form-ctn">
     <div class="form-title">Create new account</div>
@@ -11,7 +11,7 @@
         <input
           type="text"
           name="firstName"
-          pattern="[A-Za-z]{2,10}"
+          pattern="[A-Za-z ]{2,10}"
           title="Name cannot have number and has length between 2 and 10 characters"
           required
         />
@@ -21,7 +21,7 @@
         <input
           type="text"
           name="lastName"
-          pattern="[A-Za-z]{2,10}"
+          pattern="[A-Za-z ]{2,10}"
           title="Name cannot have number and has length between 2 and 10 characters"
           required
         />
@@ -45,7 +45,7 @@
         <input
           type="text"
           name="city"
-          pattern="[A-Za-z]+"
+          pattern="[A-Za-z ]{2,10}"
           title="City cannot have number"
           required
         />
@@ -157,15 +157,15 @@
       <div id="food-allergy-selection">
         <div>Select all food allergies that you have:</div>
         <div>
-          <input type="checkbox" id="milk" name="allergens" value="milk" />
+          <input type="checkbox" id="milk" name="allergens" value="Milk" />
           <label for="milk">Milk</label>
         </div>
         <div>
-          <input type="checkbox" id="eggs" name="allergens" value="eggs" />
+          <input type="checkbox" id="eggs" name="allergens" value="Eggs" />
           <label for="eggs">Eggs</label>
         </div>
         <div>
-          <input type="checkbox" id="fish" name="allergens" value="fish" />
+          <input type="checkbox" id="fish" name="allergens" value="Fish" />
           <label for="fish">Fish</label>
         </div>
         <div>
@@ -173,10 +173,10 @@
             type="checkbox"
             id="crustaceanShellFish"
             name="allergens"
-            value="crustaceanShellFish"
+            value="Crustacean Shellfish"
           />
           <label for="crustaceanShellFish"
-            >Crustaceanshellfish (e.g., crab, lobster, shrimp)</label
+            >Crustacean Shellfish (e.g., crab, lobster, shrimp)</label
           >
         </div>
         <div>
@@ -184,7 +184,7 @@
             type="checkbox"
             id="treeNuts"
             name="allergens"
-            value="treeNuts"
+            value="Tree Nuts"
           />
           <label for="treeNuts"
             >Tree Nuts (e.g., almonds,walnuts, pecans)</label
@@ -195,12 +195,12 @@
             type="checkbox"
             id="peanuts"
             name="allergens"
-            value="peanuts"
+            value="Peanuts"
           />
           <label for="peanuts">Peanuts</label>
         </div>
         <div>
-          <input type="checkbox" id="wheat" name="allergens" value="wheat" />
+          <input type="checkbox" id="wheat" name="allergens" value="Wheat" />
           <label for="wheat">Wheat</label>
         </div>
         <div>
@@ -208,7 +208,7 @@
             type="checkbox"
             id="soybeans"
             name="allergens"
-            value="soybeans"
+            value="Soybeans"
           />
           <label for="soybeans">Soybeans</label>
         </div>

@@ -25,6 +25,7 @@ router.post('/forgotpassword', async (req, res) => {
           user.password = newPassword
           try {
             await user.save()
+            req.flash('success_msg','Updating password successfully')
             res.redirect('/signin')
           } catch (err) {
             console.log('Error saving user')
@@ -34,18 +35,21 @@ router.post('/forgotpassword', async (req, res) => {
         } 
       }
       else {
-        res.render('signin/forgotpassword', {email : email, phoneNum : phoneNum, password : password, errorMessage: `Phone number ${phoneNum} does not match with our record`})
+        res.render('signin/forgotpassword', {email : email, phoneNum : phoneNum, password : password, error_msg: `Phone number ${phoneNum} does not match with our record`})
       }
   } catch (error) {
-    res.render('signin/forgotpassword', {email : email, phoneNum : phoneNum, password : password, errorMessage: `${email} does not exist`})
+    res.render('signin/forgotpassword', {email : email, phoneNum : phoneNum, password : password, error_msg: `${email} does not exist`})
   }
 })
 
 // Handle user sign in
 router.post('/', passport.authenticate('local', {
-    successRedirect: '/profile',
+    // successRedirect: '/profile',
     failureRedirect: '/signin',
-    failureFlash: true
-}))
+    failureFlash: true}),
+    function (req, res) {
+      req.flash('success_msg', 'Signing in successfully. You can update your info below')
+      res.redirect('/profile')
+    })
 
 module.exports = router
