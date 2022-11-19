@@ -1,0 +1,43 @@
+<div class="wrapper">
+  <div id="signin-box">
+    <div id="signin-title">Sign In</div>
+    <form id="signin-form" action="/signin" method="post">
+      <div class="input-container">
+        <input
+          type="text"
+          placeholder="Your Email Address"
+          id="userEmail"
+          name="username"
+          required
+        />
+      </div>
+
+      <div class="input-container">
+        <input
+          type="password"
+          placeholder="Your Password"
+          name="password"
+          id="userPassWord"
+          required
+        />
+      </div>
+      <div class="password-help-container">
+        <div class="showpassword-container">
+          <input type="checkbox" onclick="showPassWord()" />Show Password
+        </div>
+        <div class="forgotpassword-container">
+          <a href="#">Forgot Password?</a>
+        </div>
+      </div>
+      <div class="button-container">
+        <button type="submit">Sign in</button>
+      </div>
+      <div class="bottom-section">
+        <div class="new-customer">New Customer?</div>
+        <div class="create-account">
+          <a href="/signup">Create Account</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
