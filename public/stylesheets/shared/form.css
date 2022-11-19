@@ -1,0 +1,44 @@
+.form-ctn {
+    margin-top: 40px;
+    border: 1px solid black;
+    width: 500px;
+    margin-bottom: 100px;
+}
+
+.form-title {
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.form-row {
+    margin: 0px 20px 0px 20px;
+    padding: 0px 15px 15px 0px;
+}
+
+.form-row input, .form-row select {
+    width: 100%;
+    font-size: 18px;
+    padding: 10px 0px 10px 10px;
+    border: 2px solid rgb(90, 90, 90);
+    border-radius: 4px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-row input:focus, .form-row select:focus {
+    border-bottom: 4px solid black;
+}
+
+.form-row {
+    padding: 0px 15px 15px 0px;
+}
+
+.form-row i {
+    width: 500px;
+    margin-left: -30px;
+    cursor: pointer;
+}

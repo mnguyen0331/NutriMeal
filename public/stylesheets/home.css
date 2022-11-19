@@ -40,21 +40,6 @@
     color: black;
 }
 
-.Privacy img {
-    height: 40px;
-    mix-blend-mode: multiply;
-    margin-right: 5px;
-}
-
-.How-it-works {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-right: 50px;
-    margin-bottom: 20px;
-}
-
 .What-comments
 {
     font-size: 22px;

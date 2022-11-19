@@ -2,10 +2,10 @@
   <div id="have-account">
     Already have an account? Sign in <a href="/signin">here!</a>
   </div>
-  <div class="signup-box">
-    <div id="signup-title">Create new account</div>
+  <div class="form-ctn">
+    <div class="form-title">Create new account</div>
     <form id="signup-form" action="/signup" method="post">
-      <div class="form-element">
+      <div class="form-row">
         <label for="">First Name:</label>
         <input
           type="text"
@@ -15,7 +15,7 @@
           required
         />
       </div>
-      <div class="form-element">
+      <div class="form-row">
         <label for="">Last Name:</label>
         <input
           type="text"
@@ -25,7 +25,7 @@
           required
         />
       </div>
-      <div class="form-element">
+      <div class="form-row">
         <label for="">Phone Number:</label>
         <input
           type="tel"
@@ -35,11 +35,11 @@
           required
         />
       </div>
-      <div class="form-element">
+      <div class="form-row">
         <label for="">Street Address:</label>
         <input type="text" name="streetAddress" required />
       </div>
-      <div class="form-element">
+      <div class="form-row">
         <label for="">City:</label>
         <input
           type="text"
@@ -49,7 +49,7 @@
           required
         />
       </div>
-      <div class="form-element">
+      <div class="form-row">
         <label for="">Zipcode:</label>
         <input
           type="text"
@@ -59,10 +59,10 @@
           required
         />
       </div>
-      <div class="form-element">
+      <div class="form-row">
         <label for="state">State:</label>
         <select name="state" id="state" required>
-          <option value="" selected="selected">Select a State</option>
+          <option value="" selected="selected">Select</option>
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
           <option value="AZ">Arizona</option>
@@ -116,11 +116,11 @@
           <option value="WY">Wyoming</option>
         </select>
       </div>
-      <div class="form-element">
+      <div class="form-row">
         <label for="">Email:</label>
         <input type="email" name="email" required />
       </div>
-      <div class="form-element">
+      <div class="form-row">
         <label for="">Password:</label>
         <input
           type="password"
@@ -143,7 +143,7 @@
         <p id="space" class="valid">No space</p>
       </div>
 
-      <div id="food-allergy-question">
+      <div class="form-row">
         <label for="">Do you have food allergies?</label>
         <select name="allergies" id="allergies-answer" required>
           <option value="none" selected="selected">Select</option>
@@ -222,7 +222,7 @@
           <label for="others"
             >Others, please specify (seperate by comma):</label
           >
-          <div class="form-element">
+          <div class="form-row">
             <input
               type="text"
               id="otherAllergens"

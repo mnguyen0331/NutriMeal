@@ -48,12 +48,4 @@ router.post('/', passport.authenticate('local', {
     failureFlash: true
 }))
 
-// Remove session when sign out
-router.post('/logout', function(req, res, next) {
-  req.logout(function(err) {
-    if (err) { return next(err) }
-    res.redirect('/signin')
-  })
-})
-
 module.exports = router

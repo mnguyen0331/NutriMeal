@@ -1,9 +1,9 @@
-<% if (messages.error) { %> <%= messages.error %> <% } %>
 <div class="wrapper">
-  <div id="signin-box">
-    <div id="signin-title">Sign In</div>
+  <% if (messages.error) { %> <%= messages.error %> <% } %>
+  <div class="form-ctn">
+    <div class="form-title">Sign In</div>
     <form id="signin-form" action="/signin" method="post">
-      <div class="input-container">
+      <div class="form-row">
         <input
           type="email"
           placeholder="Your Email Address"
@@ -13,7 +13,7 @@
         />
       </div>
 
-      <div class="input-container">
+      <div class="form-row">
         <input
           type="password"
           placeholder="Your Password"
