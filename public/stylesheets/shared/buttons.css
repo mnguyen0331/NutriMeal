@@ -10,21 +10,3 @@
     height: 50px;
     transition: .5s;
 }
-
-.btn-signin {
-    background-color: #FDCA01;
-    width: 90%;
-}
-
-.btn-signup {
-    color: white;
-    background-color: #6495ed;
-}
-
-.btn-logout {
-    background-color: crimson;
-}
-
-.btn-update {
-    background-color: orangered;
-}

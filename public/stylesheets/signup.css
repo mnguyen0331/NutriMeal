@@ -3,15 +3,6 @@
     padding-top: 20px;
 }
 
-#have-account a {
-    color: black;
-    transition: .5s;
-}
-
-#have-account a:hover {
-    color: #FDCA01;
-}
-
 #password-requirements {
     background: #f1f1f1;
     padding-left: 80px;

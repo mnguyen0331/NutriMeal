@@ -1,6 +1,5 @@
 <div class="wrapper">
-  <% if (messages.error) { %> <%= messages.error %> <% } %>
-  <div class="form-ctn">
+  <div class="form-ctn" style="margin-top: 100px">
     <div class="form-title">Sign In</div>
     <form id="signin-form" action="/signin" method="post">
       <div class="form-row">
@@ -31,7 +30,9 @@
         </div>
       </div>
       <div style="text-align: center">
-        <button class="btn btn-signin" type="submit">Sign in</button>
+        <button style="width: 90%" class="btn btn-primary" type="submit">
+          Sign in
+        </button>
       </div>
       <div class="bottom-section">
         <div class="new-customer">New Customer?</div>

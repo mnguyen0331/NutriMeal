@@ -1,120 +1,133 @@
 <form action="/profile/logout" method="POST">
   <div style="text-align: right">
-    <button class="btn btn-logout" type="submit">Sign Out</button>
+    <button class="btn btn-warning" type="submit">LogOut</button>
   </div>
 </form>
 
-<div class="form-ctn">
-  <div class="form-title">Update Profile</div>
-  <form action="/profile/<%= user.id %>?_method=PUT" method="post">
-    <div class="form-row">
-      <label for="">First Name:</label>
-      <input
-        type="text"
-        name="firstName"
-        pattern="[A-Za-z]{2,10}"
-        title="Name cannot have number and has length between 2 and 10 characters"
-        value="<%= user.firstName %>"
-        required
-      />
-    </div>
+<div class="wrapper">
+  <div class="form-ctn">
+    <div class="form-title">Update Profile</div>
+    <form action="/profile/<%= user.id %>?_method=PUT" method="post">
+      <div class="form-row">
+        <label for="">First Name:</label>
+        <input
+          type="text"
+          name="firstName"
+          pattern="[A-Za-z]{2,10}"
+          title="Name cannot have number and has length between 2 and 10 characters"
+          value="<%= user.firstName %>"
+          required
+        />
+      </div>
 
-    <div class="form-row">
-      <label for="">Last Name:</label>
-      <input
-        type="text"
-        name="lastName"
-        pattern="[A-Za-z]{2,10}"
-        title="Name cannot have number and has length between 2 and 10 characters"
-        value="<%= user.lastName %>"
-        required
-      />
-    </div>
+      <div class="form-row">
+        <label for="">Last Name:</label>
+        <input
+          type="text"
+          name="lastName"
+          pattern="[A-Za-z]{2,10}"
+          title="Name cannot have number and has length between 2 and 10 characters"
+          value="<%= user.lastName %>"
+          required
+        />
+      </div>
 
-    <div class="form-row">
-      <label for="">Phone Number:</label>
-      <input
-        type="tel"
-        name="phoneNum"
-        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-        title="Enter phone number as xxx-xxx-xxxx"
-        value="<%= user.phoneNum %>"
-        required
-      />
-    </div>
+      <div class="form-row">
+        <label for="">Phone Number:</label>
+        <input
+          type="tel"
+          name="phoneNum"
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          title="Enter phone number as xxx-xxx-xxxx"
+          value="<%= user.phoneNum %>"
+          required
+        />
+      </div>
 
-    <div class="form-row">
-      <label for="">Street Address:</label>
-      <input
-        type="text"
-        name="streetAddress"
-        value="<%= user.streetAddress %>"
-        required
-      />
-    </div>
+      <div class="form-row">
+        <label for="">Street Address:</label>
+        <input
+          type="text"
+          name="streetAddress"
+          value="<%= user.streetAddress %>"
+          required
+        />
+      </div>
 
-    <div class="form-row">
-      <label for="">City:</label>
-      <input
-        type="text"
-        name="city"
-        pattern="[A-Za-z]+"
-        title="City cannot have number"
-        value="<%= user.city %>"
-        required
-      />
-    </div>
+      <div class="form-row">
+        <label for="">City:</label>
+        <input
+          type="text"
+          name="city"
+          pattern="[A-Za-z]+"
+          title="City cannot have number"
+          value="<%= user.city %>"
+          required
+        />
+      </div>
 
-    <div class="form-row">
-      <label for="">Zipcode:</label>
-      <input
-        type="text"
-        name="zipcode"
-        pattern="[0-9]{5}"
-        title="Enter 5 digits ZipCode"
-        value="<%= user.zipcode %>"
-        required
-      />
-    </div>
+      <div class="form-row">
+        <label for="">Zipcode:</label>
+        <input
+          type="text"
+          name="zipcode"
+          pattern="[0-9]{5}"
+          title="Enter 5 digits ZipCode"
+          value="<%= user.zipcode %>"
+          required
+        />
+      </div>
 
-    <div class="form-row">
-      <label for="state">State:</label>
-      <input
-        type="text"
-        pattern="[A-Z]{2}"
-        title="Enter state's abbreviation"
-        value="<%= user.state %>"
-      />
-    </div>
+      <div class="form-row">
+        <label for="state">State:</label>
+        <input
+          type="text"
+          pattern="[A-Z]{2}"
+          title="Enter state's abbreviation"
+          value="<%= user.state %>"
+        />
+      </div>
 
-    <div class="form-row">
-      <label for="">Email:</label>
-      <input type="email" name="email" value="<%= user.email %>" required />
-    </div>
+      <div class="form-row">
+        <label for="">Email:</label>
+        <input type="email" name="email" value="<%= user.email %>" required />
+      </div>
 
-    <div class="form-row">
-      <label for="">Password:</label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!,@,#,$,%,&,_]).{9,}"
-        title="Must contain at least one number,one uppercase, one lowercase, one special, no space and length 9 or more"
-        required
-      />
-    </div>
+      <div class="form-row">
+        <label for="">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!,@,#,$,%,&,_]).{9,}"
+          title="Must contain at least one number,one uppercase, one lowercase, one special, no space and length 9 or more"
+          required
+        />
+        <i class="bi-eye-slash" id="togglePassword"></i>
+      </div>
 
-    <div class="form-row">
-      <label for="allergens">Allergens:</label>
-      <input
-        type="text"
-        name="allergens"
-        id="allergens"
-        value="<%= user.allergiesSelections %>"
-      />
-    </div>
-    <div style="text-align: center">
-      <button class="btn btn-update" type="submit">Update</button>
-    </div>
-  </form>
+      <div id="password-requirements">
+        <div id="requirement-title">A valid password must have:</div>
+        <p id="number" class="invalid">at least 1 number</p>
+        <p id="lower" class="invalid">at least 1 lowercase letter</p>
+        <p id="upper" class="invalid">at least 1 uppercase letter</p>
+        <p id="special" class="invalid">at least 1 special character</p>
+        <p id="length" class="invalid">minimum length of 9 characters</p>
+        <p id="space" class="valid">No space</p>
+      </div>
+
+      <div class="form-row">
+        <label for="allergens">Allergens:</label>
+        <input
+          type="text"
+          name="allergens"
+          id="allergens"
+          value="<%= user.allergiesSelections %>"
+        />
+      </div>
+      <div style="text-align: center">
+        <button class="btn btn-danger" type="submit">Update</button>
+      </div>
+    </form>
+  </div>
 </div>
