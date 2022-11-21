@@ -1,0 +1,157 @@
+<form action="/users/logout" method="POST">
+  <div style="text-align: right">
+    <button class="btn btn-warning" type="submit">LogOut</button>
+  </div>
+</form>
+
+<form id="profile-form" action="/users/<%= user.id %>/profile?_method=PUT" method="post"></form>
+  <div class="form-title">Update Profile</div>
+<div style="display: flex;
+flex-direction: row; margin: auto; justify-content: space-between;">
+<div>
+  <div>
+    <label for="profile">Profile Image</label>
+    <input type="file" name="profile" id="profile" class="filepond" />
+  </div>
+  <div>
+    <label for="bio">Bio</label>
+    <textarea name="bio" id="bio" cols="30" rows="10">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore laudantium doloribus ad sequi quod maxime cupiditate commodi. Voluptatibus nihil dignissimos ducimus magnam esse voluptates blanditiis, provident animi vitae iusto est.</textarea>
+  </div>
+</div>
+
+
+  <div class="form-ctn">
+      <%- include('../partials/_form_fields') %>
+  </div>
+
+  <div class="form-ctn">
+    <div class="form-row">
+      <label for="">Street Address:</label>
+      <input
+        type="text"
+        name="streetAddress"
+        value="<%= user.streetAddress %>"
+        required
+      />
+    </div>
+
+    <div class="form-row">
+      <label for="">City:</label>
+      <input
+        type="text"
+        name="city"
+        pattern="[A-Za-z ]{2,10}"
+        title="City cannot have number"
+        value="<%= user.city %>"
+        required
+      />
+    </div>
+
+    <div class="form-row">
+      <label for="">Zipcode:</label>
+      <input
+        type="text"
+        name="zipcode"
+        pattern="[0-9]{5}"
+        title="Enter 5 digits ZipCode"
+        value="<%= user.zipcode %>"
+        required
+      />
+    </div>
+
+    <div class="form-row">
+      <label for="state">State:</label>
+      <input
+        type="text"
+        pattern="[A-Z]{2}"
+        title="Enter state's abbreviation"
+        value="<%= user.state %>"
+      />
+    </div>
+</div>
+  <div class="form-ctn">
+    <!-- Top 8 common food allergens (ref https://www.fda.gov/food/buy-store-serve-safe-food/food-allergies-what-you-need-know) -->
+    <div class="form-row">
+      <label for="">Do you have food allergies?</label>
+      <select name="allergies" id="allergies-answer" required>
+        <option value="Yes">Yes</option>
+        <option value="No" selected>No</option>
+      </select>
+    </div>
+
+    <div id="food-allergy-selection">
+      <div>Select all food allergies that you have:</div>
+      <div>
+        <input type="checkbox" id="milk" name="allergens" value="Milk" />
+        <label for="milk">Milk</label>
+      </div>
+      <div>
+        <input type="checkbox" id="eggs" name="allergens" value="Eggs" />
+        <label for="eggs">Eggs</label>
+      </div>
+      <div>
+        <input type="checkbox" id="fish" name="allergens" value="Fish" />
+        <label for="fish">Fish</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="crustaceanShellFish"
+          name="allergens"
+          value="Crustacean Shellfish"
+        />
+        <label for="crustaceanShellFish"
+          >Crustacean Shellfish (e.g., crab, lobster, shrimp)</label
+        >
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="treeNuts"
+          name="allergens"
+          value="Tree Nuts"
+        />
+        <label for="treeNuts">Tree Nuts (e.g., almonds,walnuts, pecans)</label>
+      </div>
+      <div>
+        <input type="checkbox" id="peanuts" name="allergens" value="Peanuts" />
+        <label for="peanuts">Peanuts</label>
+      </div>
+      <div>
+        <input type="checkbox" id="wheat" name="allergens" value="Wheat" />
+        <label for="wheat">Wheat</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="soybeans"
+          name="allergens"
+          value="Soybeans"
+        />
+        <label for="soybeans">Soybeans</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="others"
+          name="allergens"
+          value="other"
+          onclick="displayOtherInput(this)"
+        />
+        <label for="others">Others, please specify (seperate by comma):</label>
+        <div class="form-row">
+          <input
+            type="text"
+            id="otherAllergens"
+            name="otherAllergens"
+            style="display: none"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="text-align: center">
+  <button class="btn btn-danger" type="submit">Update</button>
+</div>
+</form>

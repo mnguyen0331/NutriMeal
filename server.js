@@ -19,10 +19,8 @@ connectDB();
 app.use(bodyParser.urlencoded({limit: '10mb', extended:false}))
 
 const homeRouter = require('./routes/home')
-const signInRouter = require('./routes/signin')
-const signUpRouter = require('./routes/signup')
 const menuRouter = require('./routes/menu')
-const profileRouter = require('./routes/profile')
+const userRouter = require('./routes/users')
 
 // Settings
 app.set('view engine', 'ejs')
@@ -53,11 +51,8 @@ app.use(function(req, res, next) {
 
 //ROUTES
 app.use('/', homeRouter)
-app.use('/signin', signInRouter)
-app.use('/signup', signUpRouter)
+app.use('/users', userRouter)
 app.use('/menu', menuRouter)
-app.use('/profile', profileRouter)
-
 
 //Checking connection
 mongoose.connection.once('open', () => {
