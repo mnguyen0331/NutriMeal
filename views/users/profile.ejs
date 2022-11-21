@@ -74,8 +74,13 @@ flex-direction: row; margin: auto; justify-content: space-between;">
     <div class="form-row">
       <label for="">Do you have food allergies?</label>
       <select name="allergies" id="allergies-answer" required>
-        <option value="Yes">Yes</option>
-        <option value="No" selected>No</option>
+        <% if (user.allergies === 'Yes') { %>
+          <option value="<%= user.allergies %>" label="<%= user.allergies %>" selected></option>
+          <option value="No">No</option>
+        <% } else { %>
+          <option value="Yes">Yes</option>
+          <option value="<%= user.allergies %>" label="<%= user.allergies %>" selected></option>
+        <% } %>
       </select>
     </div>
 
