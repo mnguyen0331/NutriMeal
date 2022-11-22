@@ -110,7 +110,7 @@ router.put('/:id/profile', async (req, res) => {
         email : req.body.email,
         password : await bcrypt.hash(req.body.password, 10),
         allergies: req.body.allergies,
-        allergiesSelections : req.body.allergens,
+        allergiesSelections : JSON.parse(req.body.allergensInput)
       }, {new : true})
       res.render('users/profile', { user: user, success_msg: 'Updating Successfully'})
     } catch (err) {

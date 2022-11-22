@@ -92,20 +92,5 @@ password.onkeyup = function() {
     }
 }
 
-// Display allergies selection if user select yes
-const allergiesAnswer = document.querySelector('#allergies-answer');
-const allergiesSelection = document.querySelector('#food-allergy-selection');
 
-const displayWhenSelected = (source, value, target) => {
-    const selectedIndex = source.selectedIndex;
-    const isSelected = source[selectedIndex].value === value;
-    target.classList[isSelected
-        ? "add"
-        : "remove"
-    ]("show");
-};
-
-allergiesAnswer.addEventListener("change", (evt) =>
-    displayWhenSelected(allergiesAnswer, "Yes", allergiesSelection)
-);
 

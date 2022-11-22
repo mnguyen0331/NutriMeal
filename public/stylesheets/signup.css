@@ -45,13 +45,3 @@
     content: "✖";
 }
 
-#food-allergy-selection {
-    display: none;
-    font-size: 18px;
-    margin: 10px 20px 0px 20px;
-}
-
-#food-allergy-selection.show {
-    display: block;
-}
-

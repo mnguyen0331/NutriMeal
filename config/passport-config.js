@@ -10,7 +10,7 @@ module.exports = function(passport) {
         email: email
       }).then(user => {
         if (!user) {
-          return done(null, false, { message: 'Email or password not match' });
+          return done(null, false, { message: 'Email or password does not match' });
         }
 
         // Match password
@@ -19,7 +19,7 @@ module.exports = function(passport) {
           if (isMatch) {
             return done(null, user);
           } else {
-            return done(null, false, { message: 'Email or password not match' });
+            return done(null, false, { message: 'Email or password does not match' });
           }
         });
       });
