@@ -65,35 +65,26 @@ router.post('/signin', passport.authenticate('local', {
 
 // Create new account
 router.post('/signup', async (req, res) => {
-    // check for duplicate email
-    const email = req.body.email
-    const duplicate = await User.findOne({ email: email }).exec()
-    if (duplicate) {
-        renderErrorSignUp(req, res, `Email ${email} already exists`)
-    }
-
-    else {
-        const firstName = req.body.firstName
-        const lastName = req.body.lastName
-        const phoneNum = req.body.phoneNum
-        const password = req.body.password
-        const hashedPassword = await bcrypt.hash(password, 10)
-        const user = new User({
-            firstName: firstName,
-            lastName: lastName,
-            phoneNum: phoneNum,
-            email: email,
-            password: hashedPassword,
-        })
-        try {
-            await user.save() // save user to DB
-            req.flash('success_msg', 'Create account successfully. You can now sign in below')
-            res.redirect('/users/signin')
-        } catch (error) {
-            console.log(error)
-            renderErrorSignUp(req, res, 'Something went wrong. Unable to create account. Please try again')
-        }
-    }
+  const { firstName, lastName, phoneNum, email, password } = req.body
+  errors = checkErrorInputs(firstName, lastName, phoneNum, email, password)
+  if (errors.length === 0) {
+    const user = new User({
+      firstName: firstName,
+      lastName: lastName,
+      phoneNum: phoneNum,
+      email: email,
+      password: await bcrypt.hash(password, 10)
+    })   
+    try {
+      await user.save() // save user to DB
+      req.flash('success_msg', 'Create account successfully. You can now sign in below')
+      res.redirect('/users/signin')
+    } catch (error) {
+      console.log(error)
+      res.redirect('/users/signup')
+    }    
+  }
+  else renderErrorSignUp(req, res, errors)
 })
 
 // Let user update their information
@@ -130,7 +121,7 @@ router.post('/logout', function(req, res, next) {
 })
 
 // Render Error SignUp Page
-function renderErrorSignUp (req, res, msg) {
+function renderErrorSignUp (req, res, errors) {
     res.render('users/signup', {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -138,7 +129,23 @@ function renderErrorSignUp (req, res, msg) {
         email: req.body.email,
         password: req.body.password,
         user: new User(),
-        error_msg: msg
+        errors: errors
     })
 }
+
+function checkErrorInputs(firstName, lastName, phoneNum, email, password) {
+  let errors = []
+  const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  if (!validEmail.test(email)) errors.push('Email is not valid')
+  User.findOne({ email: email }).then(user => { if (user) errors.push('Email already exists')})
+  const validPassword= new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%&_])(?=.{9,})")
+  if (!validPassword.test(password)) errors.push('Password is not valid')
+  const validPhoneNum = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/
+  if (!validPhoneNum.test(phoneNum)) errors.push('Phone number is not valid')
+  const validName = /^[a-zA-Z]{2,10}$/
+  if (!validName.test(firstName)) errors.push('First name is not valid')
+  if (!validName.test(lastName)) errors.push('Last name is not valid')
+  return errors
+}
+
 module.exports = router
