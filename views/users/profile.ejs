@@ -20,10 +20,18 @@
   >
     <div>
       <div>
-        <label for="profile">Profile Image</label>
+        <div>
+          <img
+            height="150"
+            width="100"
+            src="<%= user.profileImagePath %>"
+            alt="A profile's picture of user"
+          />
+        </div>
+        <label for="profile">Upload new profile image</label>
         <input type="file" name="profile" id="profile" class="filepond" />
       </div>
-      <div>
+      <div class="form-row">
         <label for="bio">Bio</label>
         <textarea name="bio" id="bio" cols="30" rows="10">
 <%= user.bio %></textarea
@@ -55,6 +63,17 @@
       </div>
 
       <div class="form-row">
+        <label for="state">State:</label>
+        <input
+          type="text"
+          name="state"
+          pattern="[A-Z]{2}"
+          title="Enter state's abbreviation"
+          value="<%= user.state %>"
+        />
+      </div>
+
+      <div class="form-row">
         <label for="">Zipcode:</label>
         <input
           type="text"
@@ -62,16 +81,6 @@
           pattern="[0-9]{5}"
           title="Enter 5 digits ZipCode"
           value="<%= user.zipcode %>"
-        />
-      </div>
-
-      <div class="form-row">
-        <label for="state">State:</label>
-        <input
-          type="text"
-          pattern="[A-Z]{2}"
-          title="Enter state's abbreviation"
-          value="<%= user.state %>"
         />
       </div>
     </div>
@@ -152,11 +161,9 @@
           <% const commonAllergens = ["Milk", "Eggs", "Fish",
           "CrustaceanShellfish", "TreeNuts", "Peanuts", "Wheat", "Soybeans"] %>
           <input type="checkbox" id="others" name="allergens" value="other"
-          onclick="displayOtherInput(this)" <%=
-          commonAllergens.includes(user.allergiesSelections.slice(-1)) ? '' :
-          (user.allergies === "Yes") &&
-          (commonAllergens.includes(user.allergiesSelections.slice(-1))) ?
-          'checked' : '' %> />
+          onclick="displayOtherInput(this)" <%= user.allergies === "No" ? '' :
+          commonAllergens.includes(user.allergiesSelections[user.allergiesSelections.length
+          - 1]) === false ? 'checked' : '' %> />
           <label for="others"
             >Others, please specify (seperate by comma):</label
           >
@@ -173,7 +180,7 @@
       </div>
     </div>
   </div>
-  <div style="text-align: center">
+  <div style="text-align: center; margin-bottom: 60px">
     <a class="btn btn-secondary" href="/users/<%= user.id %>/profile">Cancel</a>
     <button class="btn btn-danger" type="submit">Update</button>
   </div>

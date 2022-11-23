@@ -45,26 +45,3 @@
     required
   />
 </div>
-<div class="form-row">
-  <label for="">Password:</label>
-  <input
-    type="password"
-    id="password"
-    name="password"
-    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!,@,#,$,%,&,_]).{9,}"
-    title="Must contain at least one number,one uppercase, one lowercase, one special, no space and length 9 or more"
-    value="<%= typeof password != 'undefined' ? password : '' %>"
-    required
-  />
-  <i class="bi-eye-slash" id="togglePassword"></i>
-</div>
-
-<div id="password-requirements">
-  <div id="requirement-title">A valid password must have:</div>
-  <p id="number" class="invalid">at least 1 number</p>
-  <p id="lower" class="invalid">at least 1 lowercase letter</p>
-  <p id="upper" class="invalid">at least 1 uppercase letter</p>
-  <p id="special" class="invalid">at least 1 special character</p>
-  <p id="length" class="invalid">minimum length of 9 characters</p>
-  <p id="space" class="valid">No space</p>
-</div>

@@ -4,6 +4,7 @@ const passport = require('passport')
 const User = require('../models/User')
 const bcrypt = require('bcrypt')
 const { checkAuthenticated, checkNotAuthenticated } = require('../config/auth')
+const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 
 // SignIn Page
 router.get('/signin', checkNotAuthenticated, (req, res) => {
@@ -66,7 +67,7 @@ router.post('/signin', passport.authenticate('local', {
 // Create new account
 router.post('/signup', async (req, res) => {
   const { firstName, lastName, phoneNum, email, password } = req.body
-  errors = checkErrorInputs(firstName, lastName, phoneNum, email, password)
+  let errors = checkErrorInfo(firstName, lastName, phoneNum, email, password)
   if (errors.length === 0) {
     const user = await User.findOne({email: email})
     if (user) {
@@ -97,27 +98,39 @@ router.post('/signup', async (req, res) => {
 
 // Let user update their information
 router.put('/:id/profile', async (req, res) => {
+  const { firstName, lastName, phoneNum, email, streetAddress, city, zipcode, state, allergies, bio, profile } = req.body
+  let infoErrors = checkErrorInfo(firstName, lastName, phoneNum, email, "Password000@admin.com")
+  let addressErrors = []
+  if (streetAddress == '' && city == '' && zipcode == '' && state == '') addressErrors = []
+  else addressErrors = checkErrorAddress(streetAddress, city, zipcode, state)
+  if (infoErrors.length === 0 && addressErrors.length === 0) {
     try {
-      const user = await User.findByIdAndUpdate({_id : req.params.id}, {
-        firstName : req.body.firstName,
-        lastName : req.body.lastName,
-        phoneNum : req.body.phoneNum,
-        streetAddress : req.body.streetAddress,
-        city : req.body.city,
-        zipcode : req.body.zipcode,
-        state : req.body.state,
-        email : req.body.email,
-        password : await bcrypt.hash(req.body.password, 10),
-        allergies: req.body.allergies,
-        allergiesSelections : JSON.parse(req.body.allergensInput)
-      }, {new : true})
+      const user = await User.findById(req.params.id)
+      user.firstName = firstName
+      user.lastName = lastName
+      user.phoneNum = phoneNum
+      user.email = email
+      user.streetAddress = streetAddress
+      user.city = city
+      user.zipcode = zipcode
+      user.state = state
+      user.allergies = allergies
+      user.allergiesSelections = JSON.parse(req.body.allergensInput)
+      user.bio = bio
+      saveProfile(user, profile)
+      await user.save()
       res.render('users/profile', { user: user, success_msg: 'Updating Successfully'})
     } catch (err) {
       console.log(err)
       req.flash('error_msg', 'Error updating info')
-      res.redirect('/users/profile')
+      res.redirect(`/users/${req.params.id}/profile`)
     } 
-  })
+  }
+  else {
+    const user = await User.findById(req.params.id)
+    res.render('users/profile', { user: user, errors: infoErrors.concat(addressErrors) })
+  }
+})
 
 // Remove session when sign out
 router.post('/logout', function(req, res, next) {
@@ -141,7 +154,7 @@ function renderErrorSignUp (req, res, errors) {
     })
 }
 
-function checkErrorInputs(firstName, lastName, phoneNum, email, password) {
+function checkErrorInfo(firstName, lastName, phoneNum, email, password) {
   let errors = []
   const validName = /^[a-zA-Z]{2,10}$/
   if (!validName.test(firstName)) errors.push('First name is not valid')
@@ -154,6 +167,28 @@ function checkErrorInputs(firstName, lastName, phoneNum, email, password) {
   if (!validPassword.test(password)) errors.push('Password is not valid')
   if (email == password) errors.push('Password cannot be the same as email')
   return errors
+}
+
+function checkErrorAddress(streetAddress, city, zipcode, state) {
+  let errors = []
+  const validStreetAddress = /^[0-9]+ [a-zA-Z]+ [a-zA-Z]+$/
+  if (!validStreetAddress.test(streetAddress)) errors.push('Street address is not valid')
+  const validCity = /^[a-zA-Z]{2,10} ?[a-zA-Z]{2,10}$/
+  if (!validCity.test(city)) errors.push('City is not valid')
+  const validZipCode = /^[0-9]{5}$/
+  if (!validZipCode.test(zipcode)) errors.push('Zipcode is not valid')
+  const validState = /^[A-Z]{2}$/
+  if (!validState.test(state)) errors.push('State is not valid')
+  return errors
+}
+
+function saveProfile(user, profileEncoded) {
+  if (profileEncoded == null || profileEncoded == '') return
+  const profile = JSON.parse(profileEncoded)
+  if (profile != null && imageMimeTypes.includes(profile.type)) {
+    user.profileImage = new Buffer.from(profile.data, 'base64')
+    user.profileImageType = profile.type
+  }
 }
 
 module.exports = router
