@@ -154,7 +154,9 @@
           <input type="checkbox" id="others" name="allergens" value="other"
           onclick="displayOtherInput(this)" <%=
           commonAllergens.includes(user.allergiesSelections.slice(-1)) ? '' :
-          user.allergies === "Yes" ? 'checked' : '' %> />
+          (user.allergies === "Yes") &&
+          (commonAllergens.includes(user.allergiesSelections.slice(-1))) ?
+          'checked' : '' %> />
           <label for="others"
             >Others, please specify (seperate by comma):</label
           >

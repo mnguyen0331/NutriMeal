@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="form-ctn" style="margin-top: 100px">
     <div class="form-title">Sign In</div>
-    <form id="signin-form" action="/users/signin" method="post">
+    <form action="/users/signin" method="post">
       <div class="form-row">
         <input
           type="email"
@@ -16,29 +16,27 @@
         <input
           type="password"
           placeholder="Your Password"
-          id="userPassWord"
+          id="password"
           name="password"
           required
         />
+        <i class="bi-eye-slash" id="togglePassword"></i>
       </div>
-      <div class="password-help-container">
-        <div class="showpassword-container">
-          <input type="checkbox" onclick="showPassWord()" />Show Password
-        </div>
-        <div class="forgotpassword-container">
-          <a href="/users/signin/forgotpassword">Forgot Password?</a>
-        </div>
+
+      <div class="form-sub-row" style="text-align: right; margin-right: 20px">
+        <a href="/users/signin/forgotpassword">Forgot Password?</a>
       </div>
-      <div style="text-align: center">
-        <button style="width: 90%" class="btn btn-warning" type="submit">
+
+      <div class="form-row" style="text-align: center">
+        <button style="width: 100%" class="btn btn-warning" type="submit">
           Sign in
         </button>
       </div>
-      <div class="bottom-section">
-        <div class="new-customer">New Customer?</div>
-        <div class="create-account">
-          <a href="/users/signup">Create Account</a>
-        </div>
+
+      <div class="form-sub-row">New Customer?</div>
+
+      <div class="form-sub-row">
+        <a href="/users/signup">Create Account</a>
       </div>
     </form>
   </div>

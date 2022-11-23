@@ -68,21 +68,29 @@ router.post('/signup', async (req, res) => {
   const { firstName, lastName, phoneNum, email, password } = req.body
   errors = checkErrorInputs(firstName, lastName, phoneNum, email, password)
   if (errors.length === 0) {
-    const user = new User({
-      firstName: firstName,
-      lastName: lastName,
-      phoneNum: phoneNum,
-      email: email,
-      password: await bcrypt.hash(password, 10)
-    })   
-    try {
-      await user.save() // save user to DB
-      req.flash('success_msg', 'Create account successfully. You can now sign in below')
-      res.redirect('/users/signin')
-    } catch (error) {
-      console.log(error)
-      res.redirect('/users/signup')
-    }    
+    const user = await User.findOne({email: email})
+    if (user) {
+      errors.push('Email already exists')
+      renderErrorSignUp(req, res, errors)
+    }
+    else {
+      try {
+        const newUser = new User({
+          firstName: firstName,
+          lastName: lastName,
+          phoneNum: phoneNum,
+          email: email,
+          password: await bcrypt.hash(password, 10)
+        })
+        console.log(newUser)   
+        await newUser.save() // save user to DB
+        req.flash('success_msg', 'Create account successfully. You can now sign in below')
+        res.redirect('/users/signin')
+      } catch (error) {
+        console.log(error)
+        res.redirect('/users/signup')
+      }    
+    }
   }
   else renderErrorSignUp(req, res, errors)
 })
@@ -135,16 +143,16 @@ function renderErrorSignUp (req, res, errors) {
 
 function checkErrorInputs(firstName, lastName, phoneNum, email, password) {
   let errors = []
-  const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  if (!validEmail.test(email)) errors.push('Email is not valid')
-  User.findOne({ email: email }).then(user => { if (user) errors.push('Email already exists')})
-  const validPassword= new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%&_])(?=.{9,})")
-  if (!validPassword.test(password)) errors.push('Password is not valid')
-  const validPhoneNum = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/
-  if (!validPhoneNum.test(phoneNum)) errors.push('Phone number is not valid')
   const validName = /^[a-zA-Z]{2,10}$/
   if (!validName.test(firstName)) errors.push('First name is not valid')
   if (!validName.test(lastName)) errors.push('Last name is not valid')
+  const validPhoneNum = /^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/
+  if (!validPhoneNum.test(phoneNum)) errors.push('Phone number is not valid')
+  const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  if (!validEmail.test(email)) errors.push('Email is not valid')
+  const validPassword= new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%&_])(?=.{9,})")
+  if (!validPassword.test(password)) errors.push('Password is not valid')
+  if (email == password) errors.push('Password cannot be the same as email')
   return errors
 }
 
