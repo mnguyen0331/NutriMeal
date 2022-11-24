@@ -1,26 +1,14 @@
-<form action="/users/logout" method="POST">
-  <div style="text-align: right">
-    <button class="btn btn-warning" type="submit">LogOut</button>
-  </div>
-</form>
-
+<div class="form-title">Update Profile</div>
 <form
   id="profile-form"
   action="/users/<%= user.id %>/profile?_method=PUT"
   method="post"
 >
-  <div class="form-title">Update Profile</div>
-  <div
-    style="
-      display: flex;
-      flex-direction: row;
-      margin: auto;
-      justify-content: space-between;
-    "
-  >
-    <div>
+  <div class="profile-ctn">
+    <div class="profile-intro">
       <div>
-        <div>
+        <% if (typeof user.profileImagePath != 'undefined') { %>
+        <div class="profile-image">
           <img
             height="150"
             width="100"
@@ -28,20 +16,22 @@
             alt="A profile's picture of user"
           />
         </div>
-        <label for="profile">Upload new profile image</label>
-        <input type="file" name="profile" id="profile" class="filepond" />
+        <% } %>
+        <div class="profile-upload">
+          <label for="profile">Upload new profile image</label>
+          <input type="file" name="profile" id="profile" class="filepond" />
+        </div>
       </div>
-      <div class="form-row">
+
+      <div class="bio-section">
         <label for="bio">Bio</label>
-        <textarea name="bio" id="bio" cols="30" rows="10">
-<%= user.bio %></textarea
-        >
+        <textarea name="bio" id="bio"><%= user.bio %></textarea>
       </div>
     </div>
 
-    <div class="form-ctn"><%- include('../partials/_form_fields') %></div>
+    <div class="profile-main"><%- include('../partials/_form_fields') %></div>
 
-    <div class="form-ctn">
+    <div class="profile-main">
       <div class="form-row">
         <label for="">Street Address:</label>
         <input
@@ -84,8 +74,8 @@
         />
       </div>
     </div>
-    <div class="form-ctn">
-      <!-- Top 8 common food allergens (ref https://www.fda.gov/food/buy-store-serve-safe-food/food-allergies-what-you-need-know) -->
+
+    <div class="profile-main">
       <div class="form-row">
         <label for="">Do you have food allergies?</label>
         <select
@@ -157,15 +147,17 @@
           />
           <label for="soybeans">Soybeans</label>
         </div>
+
         <div>
           <% const commonAllergens = ["Milk", "Eggs", "Fish",
           "CrustaceanShellfish", "TreeNuts", "Peanuts", "Wheat", "Soybeans"] %>
           <input type="checkbox" id="others" name="allergens" value="other"
-          onclick="displayOtherInput(this)" <%= user.allergies === "No" ? '' :
+          onclick="displayOtherInput(this)" <%= user.allergies === "No" ||
+          user.allergiesSelections.length === 0 ? '' :
           commonAllergens.includes(user.allergiesSelections[user.allergiesSelections.length
           - 1]) === false ? 'checked' : '' %> />
-          <label for="others"
-            >Others, please specify (seperate by comma):</label
+          <label for="others">
+            Others, please specify (seperate by comma):</label
           >
           <div class="form-row">
             <input
@@ -180,7 +172,8 @@
       </div>
     </div>
   </div>
-  <div style="text-align: center; margin-bottom: 60px">
+
+  <div class="profile-btn">
     <a class="btn btn-secondary" href="/users/<%= user.id %>/profile">Cancel</a>
     <button class="btn btn-danger" type="submit">Update</button>
   </div>

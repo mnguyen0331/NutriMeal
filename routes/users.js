@@ -38,12 +38,12 @@ router.post('/signin/forgotpassword', async (req, res) => {
           try {
             await user.save()
             req.flash('success_msg','Updating password successfully')
-            res.redirect('/users/signin')
+            res.redirect(200,'/users/signin')
           } catch (err) {
-            console.log('Error saving user')
+            res.redirect(500,'/users/signin/forgotpassword')
           }
         } catch (err) {
-          console.log(err)
+          res.redirect(500,'/users/signin/forgotpassword')
         } 
       }
       else {
@@ -72,7 +72,7 @@ router.post('/signup', async (req, res) => {
     const user = await User.findOne({email: email})
     if (user) {
       errors.push('Email already exists')
-      renderErrorSignUp(req, res, errors)
+      renderErrorSignUp(409, req, res, errors)
     }
     else {
       try {
@@ -83,17 +83,17 @@ router.post('/signup', async (req, res) => {
           email: email,
           password: await bcrypt.hash(password, 10)
         })
-        console.log(newUser)   
         await newUser.save() // save user to DB
         req.flash('success_msg', 'Create account successfully. You can now sign in below')
-        res.redirect('/users/signin')
+        res.redirect(200,'/users/signin')
       } catch (error) {
-        console.log(error)
-        res.redirect('/users/signup')
+        res.redirect(500,'/users/signup')
       }    
     }
   }
-  else renderErrorSignUp(req, res, errors)
+  else {
+    renderErrorSignUp(400,req, res, errors)
+  }
 })
 
 // Let user update their information
@@ -119,16 +119,15 @@ router.put('/:id/profile', async (req, res) => {
       user.bio = bio
       saveProfile(user, profile)
       await user.save()
-      res.render('users/profile', { user: user, success_msg: 'Updating Successfully'})
+      res.status(200).render('users/profile', { user: user, success_msg: 'Updating Successfully'})
     } catch (err) {
-      console.log(err)
       req.flash('error_msg', 'Error updating info')
-      res.redirect(`/users/${req.params.id}/profile`)
+      res.redirect(500,`/users/${req.params.id}/profile`)
     } 
   }
   else {
     const user = await User.findById(req.params.id)
-    res.render('users/profile', { user: user, errors: infoErrors.concat(addressErrors) })
+    res.status(400).render('users/profile', { user: user, errors: infoErrors.concat(addressErrors) })
   }
 })
 
@@ -142,8 +141,8 @@ router.post('/logout', function(req, res, next) {
 })
 
 // Render Error SignUp Page
-function renderErrorSignUp (req, res, errors) {
-    res.render('users/signup', {
+function renderErrorSignUp (status, req, res, errors) {
+    res.status(status).render('users/signup', {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         phoneNum: req.body.phoneNum,
