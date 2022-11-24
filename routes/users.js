@@ -38,7 +38,7 @@ router.post('/signin/forgotpassword', async (req, res) => {
           try {
             await user.save()
             req.flash('success_msg','Updating password successfully')
-            res.redirect(200,'/users/signin')
+            res.redirect('/users/signin')
           } catch (err) {
             res.redirect(500,'/users/signin/forgotpassword')
           }
@@ -85,7 +85,7 @@ router.post('/signup', async (req, res) => {
         })
         await newUser.save() // save user to DB
         req.flash('success_msg', 'Create account successfully. You can now sign in below')
-        res.redirect(200,'/users/signin')
+        res.redirect('/users/signin')
       } catch (error) {
         res.redirect(500,'/users/signup')
       }    
