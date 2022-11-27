@@ -1,0 +1,43 @@
+<div class="wrapper">
+  <div class="form-ctn" style="margin-top: 100px">
+    <div class="form-title">Sign In</div>
+    <form action="/users/signin" method="post">
+      <div class="form-row">
+        <input
+          type="email"
+          placeholder="Your Email Address"
+          id="userEmail"
+          name="email"
+          required
+        />
+      </div>
+
+      <div class="form-row">
+        <input
+          type="password"
+          placeholder="Your Password"
+          id="password"
+          name="password"
+          required
+        />
+        <i class="bi-eye-slash" id="togglePassword"></i>
+      </div>
+
+      <div class="form-sub-row" style="text-align: right; margin-right: 20px">
+        <a href="/users/signin/forgotpassword">Forgot Password?</a>
+      </div>
+
+      <div class="form-row" style="text-align: center">
+        <button style="width: 100%" class="btn btn-warning" type="submit">
+          Sign in
+        </button>
+      </div>
+
+      <div class="form-sub-row">New Customer?</div>
+
+      <div class="form-sub-row">
+        <a href="/users/signup">Create Account</a>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<header>
+  <div class="left-header">
+    <a href="/">
+      <img id="nutrimeal-logo" src="/images/logos/logo.png" alt="" />
+    </a>
+    NutriMeal
+  </div>
+  <div class="right-header">
+    <img src="/images/logos/fblogo.png" alt="" />
+    <img src="/images/logos/instalogo.png" alt="" />
+    <img src="/images/logos/snaplogo.png" alt="" />
+    <img src="/images/logos/twittlogo.png" alt="" />
+  </div>
+  <% if(isAuthenticated ) { %>
+  <form action="/users/logout" method="POST">
+    <div style="text-align: right">
+      <button class="btn btn-warning" type="submit">LogOut</button>
+    </div>
+  </form>
+  <% } else { %>
+    <form action="/users/signin" method="POST">
+      <div style="text-align: right">
+        <button class="btn btn-warning" type="submit">SignIn</button>
+      </div>
+    </form>
+    <% } %>
+</header>

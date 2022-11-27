@@ -1,0 +1,47 @@
+<div class="form-row">
+  <label for="">First Name:</label>
+  <input
+    type="text"
+    name="firstName"
+    pattern="[A-Za-z ]{2,10}"
+    title="Name cannot have number and has length between 2 and 10 characters"
+    value="<%= typeof firstName != 'undefined' ? firstName : user.firstName %>"
+    required
+  />
+</div>
+
+<div class="form-row">
+  <label for="">Last Name:</label>
+  <input
+    type="text"
+    name="lastName"
+    pattern="[A-Za-z ]{2,10}"
+    title="Name cannot have number and has length between 2 and 10 characters"
+    value="<%= typeof lastName != 'undefined' ? lastName : user.lastName %>"
+    required
+  />
+</div>
+
+<div class="form-row">
+  <label for="">Phone Number:</label>
+  <input
+    type="tel"
+    onkeydown="phoneNumberFormatter()"
+    id="phoneNum"
+    name="phoneNum"
+    pattern="^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$"
+    value="<%= typeof phoneNum != 'undefined' ? phoneNum : user.phoneNum %>"
+    title="Enter 10 digits phone number"
+    required
+  />
+</div>
+
+<div class="form-row">
+  <label for="">Email:</label>
+  <input
+    type="email"
+    name="email"
+    value="<%= typeof email != 'undefined' ? email : user.email %>"
+    required
+  />
+</div>

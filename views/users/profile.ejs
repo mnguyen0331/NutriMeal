@@ -1,0 +1,180 @@
+<div class="form-title">Update Profile</div>
+<form
+  id="profile-form"
+  action="/users/<%= user.id %>/profile?_method=PUT"
+  method="post"
+>
+  <div class="profile-ctn">
+    <div class="profile-intro">
+      <div>
+        <% if (typeof user.profileImagePath != 'undefined') { %>
+        <div class="profile-image">
+          <img
+            height="150"
+            width="100"
+            src="<%= user.profileImagePath %>"
+            alt="A profile's picture of user"
+          />
+        </div>
+        <% } %>
+        <div class="profile-upload">
+          <label for="profile">Upload new profile image</label>
+          <input type="file" name="profile" id="profile" class="filepond" />
+        </div>
+      </div>
+
+      <div class="bio-section">
+        <label for="bio">Bio</label>
+        <textarea name="bio" id="bio"><%= user.bio %></textarea>
+      </div>
+    </div>
+
+    <div class="profile-main"><%- include('../partials/_form_fields') %></div>
+
+    <div class="profile-main">
+      <div class="form-row">
+        <label for="">Street Address:</label>
+        <input
+          type="text"
+          name="streetAddress"
+          value="<%= user.streetAddress %>"
+        />
+      </div>
+
+      <div class="form-row">
+        <label for="">City:</label>
+        <input
+          type="text"
+          name="city"
+          pattern="[A-Za-z ]{2,10}"
+          title="City cannot have number"
+          value="<%= user.city %>"
+        />
+      </div>
+
+      <div class="form-row">
+        <label for="state">State:</label>
+        <input
+          type="text"
+          name="state"
+          pattern="[A-Z]{2}"
+          title="Enter state's abbreviation"
+          value="<%= user.state %>"
+        />
+      </div>
+
+      <div class="form-row">
+        <label for="">Zipcode:</label>
+        <input
+          type="text"
+          name="zipcode"
+          pattern="[0-9]{5}"
+          title="Enter 5 digits ZipCode"
+          value="<%= user.zipcode %>"
+        />
+      </div>
+    </div>
+
+    <div class="profile-main">
+      <div class="form-row">
+        <label for="">Do you have food allergies?</label>
+        <select
+          name="allergies"
+          id="allergies-answer"
+          onchange="showAllergens('food-allergy-selection', this)"
+        >
+          <% if (user.allergies === 'Yes') { %>
+          <option value="Yes" selected>Yes</option>
+          <option value="No">No</option>
+          <% } else { %>
+          <option value="Yes">Yes</option>
+          <option value="No" selected>No</option>
+          <% } %>
+        </select>
+      </div>
+
+      <div
+        id="food-allergy-selection"
+        style="display: none; margin: 10px 20px 0px 20px"
+      >
+        <div>Select all food allergies that you have:</div>
+        <div>
+          <input type="checkbox" id="Milk" name="allergens" value="Milk" <%=
+          user.allergiesSelections.includes("Milk") ? 'checked' : '' %> />
+          <label for="Milk">Milk</label>
+        </div>
+        <div>
+          <input type="checkbox" id="eggs" name="allergens" value="Eggs" <%=
+          user.allergiesSelections.includes("Eggs") ? 'checked' : '' %> />
+          <label for="eggs">Eggs</label>
+        </div>
+        <div>
+          <input type="checkbox" id="fish" name="allergens" value="Fish" <%=
+          user.allergiesSelections.includes("Fish") ? 'checked' : '' %> />
+          <label for="fish">Fish</label>
+        </div>
+        <div>
+          <input type="checkbox" id="crustaceanShellFish" name="allergens"
+          value="CrustaceanShellfish" <%=
+          user.allergiesSelections.includes("CrustaceanShellfish") ? 'checked' :
+          '' %> />
+          <label for="crustaceanShellFish"
+            >Crustacean Shellfish (e.g., crab, lobster, shrimp)</label
+          >
+        </div>
+        <div>
+          <input type="checkbox" id="treeNuts" name="allergens" value="TreeNuts"
+          <%= user.allergiesSelections.includes("TreeNuts") ? 'checked' : '' %>
+          />
+          <label for="treeNuts"
+            >Tree Nuts (e.g., almonds,walnuts, pecans)</label
+          >
+        </div>
+        <div>
+          <input type="checkbox" id="peanuts" name="allergens" value="Peanuts"
+          <%= user.allergiesSelections.includes("Peanuts") ? 'checked' : '' %>
+          />
+          <label for="peanuts">Peanuts</label>
+        </div>
+        <div>
+          <input type="checkbox" id="wheat" name="allergens" value="Wheat" <%=
+          user.allergiesSelections.includes("Wheat") ? 'checked' : '' %> />
+          <label for="wheat">Wheat</label>
+        </div>
+        <div>
+          <input type="checkbox" id="soybeans" name="allergens" value="Soybeans"
+          <%= user.allergiesSelections.includes("Soybeans") ? 'checked' : '' %>
+          />
+          <label for="soybeans">Soybeans</label>
+        </div>
+
+        <div>
+          <% const commonAllergens = ["Milk", "Eggs", "Fish",
+          "CrustaceanShellfish", "TreeNuts", "Peanuts", "Wheat", "Soybeans"] %>
+          <input type="checkbox" id="others" name="allergens" value="other"
+          onclick="displayOtherInput(this)" <%= user.allergies === "No" ||
+          user.allergiesSelections.length === 0 ? '' :
+          commonAllergens.includes(user.allergiesSelections[user.allergiesSelections.length
+          - 1]) === false ? 'checked' : '' %> />
+          <label for="others">
+            Others, please specify (seperate by comma):</label
+          >
+          <div class="form-row">
+            <input
+              type="text"
+              id="otherAllergens"
+              name="otherAllergens"
+              style="display: none"
+              value="<%= user.allergiesSelections.filter((element) => !commonAllergens.includes(element)) %>"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-btn">
+    <a class="btn btn-secondary" href="/users/<%= user.id %>/profile">Cancel</a>
+    <button class="btn btn-danger" type="submit">Update</button>
+  </div>
+</form>
