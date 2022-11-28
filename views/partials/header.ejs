@@ -6,15 +6,29 @@
     NutriMeal
   </div>
   <div class="right-header">
-    <img src="/images/logos/fblogo.png" alt="" />
-    <img src="/images/logos/instalogo.png" alt="" />
-    <img src="/images/logos/snaplogo.png" alt="" />
-    <img src="/images/logos/twittlogo.png" alt="" />
-  </div>
-
-  <form action="/users/logout" method="POST">
-    <div style="text-align: right">
-      <button class="btn btn-warning" type="submit">LogOut</button>
+    <div class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-bs-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Social
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><img src="/images/logos/fblogo.png" alt="" />Facebook</li>
+        <li><img src="/images/logos/instalogo.png" alt="" />Instagram</li>
+        <li><img src="/images/logos/snaplogo.png" alt="" />Snapchat</li>
+        <li><img src="/images/logos/twittlogo.png" alt="" />Twitter</li>
+      </ul>
     </div>
-  </form>
+
+    <form action="/users/logout" method="POST">
+      <div style="text-align: right">
+        <button class="btn btn-warning" type="submit">LogOut</button>
+      </div>
+    </form>
+  </div>
 </header>
