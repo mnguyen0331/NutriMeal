@@ -25,10 +25,18 @@
       </ul>
     </div>
 
+    <% if (isAuthenticated) { %>
+    <a class="btn btn-warning" href="/users/<%= locals.user.id %>/profile"
+      >Profile</a
+    >
     <form action="/users/logout" method="POST">
       <div style="text-align: right">
         <button class="btn btn-warning" type="submit">LogOut</button>
       </div>
     </form>
+    <% } else { %>
+
+    <a class="btn btn-warning" href="/users/signin" role="button">Sign In</a>
+    <% } %>
   </div>
 </header>

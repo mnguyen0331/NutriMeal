@@ -59,8 +59,8 @@ router.post('/signin', passport.authenticate('local', {
     failureRedirect: '/users/signin',
     failureFlash: true}),
     function (req, res) {
-      req.flash('success_msg', 'Signing in successfully. You can update your info below')
-      res.redirect(`/users/${req.user.id}/profile`)
+      req.flash('success_msg', 'Signing in successfully')
+      res.redirect(`/`)
     }
 )
 
