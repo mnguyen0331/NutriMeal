@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/mnguyen0331/NutriMeal#readme",
   "dependencies": {
+    "axios": "^1.2.0",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
     "crypto": "^1.0.1",

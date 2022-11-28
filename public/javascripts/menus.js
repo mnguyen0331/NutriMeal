@@ -321,8 +321,8 @@ const container = document.querySelector(".btn-container");
 
 // load items 
 window.addEventListener("DOMContentLoaded", function() {
-  displayMenuItems(menu);
-  displayMenuButtons();
+  //displayMenuItems(menu);
+  //displayMenuButtons();
 });
 
 
