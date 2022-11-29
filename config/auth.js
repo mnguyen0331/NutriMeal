@@ -1,7 +1,7 @@
 function checkNotAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
       req.flash('error_msg', 'Already signed in!')
-      return res.redirect(`/users/${req.user.id}/profile`)
+      res.redirect('/')
     }
     next()
 }

@@ -132,11 +132,11 @@ router.put('/:id/profile', async (req, res) => {
 })
 
 // Remove session when sign out
-router.post('/logout', function(req, res, next) {
+router.post('/logout', checkAuthenticated, function(req, res, next) {
   req.logout(function(err) {
     if (err) { return next(err) }
     req.flash('success_msg', 'Logging Out Successfully')
-    res.redirect('/users/signin')
+    res.redirect('/')
   })
 })
 

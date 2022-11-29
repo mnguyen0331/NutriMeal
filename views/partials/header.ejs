@@ -26,17 +26,23 @@
     </div>
 
     <% if (isAuthenticated) { %>
-    <a class="btn btn-warning" href="/users/<%= locals.user.id %>/profile"
-      >Profile</a
-    >
-    <form action="/users/logout" method="POST">
-      <div style="text-align: right">
+    <div>
+      <a class="btn btn-info" href="/users/<%= locals.user.id %>/profile"
+        >Profile</a
+      >
+    </div>
+    <div>
+      <form action="/users/logout" method="POST">
         <button class="btn btn-warning" type="submit">LogOut</button>
-      </div>
-    </form>
+      </form>
+    </div>
     <% } else { %>
-
-    <a class="btn btn-warning" href="/users/signin" role="button">Sign In</a>
+    <div>
+      <a class="btn btn-primary" href="/users/signup">SignUp</a>
+    </div>
+    <div>
+      <a class="btn btn-warning" href="/users/signin" role="button">SignIn</a>
+    </div>
     <% } %>
   </div>
 </header>
