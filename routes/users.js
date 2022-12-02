@@ -106,21 +106,36 @@ router.put('/:id/profile', async (req, res) => {
   if (infoErrors.length === 0 && addressErrors.length === 0) {
     try {
       const user = await User.findById(req.params.id)
-      user.firstName = firstName
-      user.lastName = lastName
-      user.phoneNum = phoneNum
-      user.email = email
-      user.streetAddress = streetAddress
-      user.city = city
-      user.zipcode = zipcode
-      user.state = state
-      user.allergies = allergies
-      user.allergiesSelections = JSON.parse(req.body.allergensInput)
-      user.bio = bio
+      if (user.firstName !== firstName) user.firstName = firstName
+      if (user.lastName !== lastName) user.lastName = lastName
+      if (user.phoneNum !== phoneNum) user.phoneNum = phoneNum
+      if (user.streetAddress !== streetAddress) user.streetAddress = streetAddress
+      if (user.city !== city) user.city = city
+      if (user.zipcode !== zipcode) user.zipcode = zipcode
+      if (user.state !== state) user.state = state
+      if (user.allergies !== allergies) user.allergies = allergies
+      allergiesSelections = JSON.parse(req.body.allergensInput)
+      user.allergiesSelections = allergiesSelections
+      if (user.bio !== bio) user.bio = bio
       saveProfile(user, profile)
-      await user.save()
-      res.status(200).render('users/profile', { user: user, success_msg: 'Updating Successfully'})
+      if (user.email !== email) {
+        const duplicate = await User.findOne({email: email})
+        if (duplicate) {
+          await user.save()
+          res.status(409).render('users/profile', { user: user, error_msg: 'Error updating email. Entered email already exists'})
+        }
+        else {
+          user.email = email
+          await user.save()
+          res.status(200).render('users/profile', { user: user, success_msg: 'Updating Successfully'})        
+        } 
+      }
+      else {
+        await user.save()
+        res.status(200).render('users/profile', { user: user, success_msg: 'Updating Successfully'}) 
+      }
     } catch (err) {
+      console.log(err)
       req.flash('error_msg', 'Error updating info')
       res.redirect(500,`/users/${req.params.id}/profile`)
     } 
