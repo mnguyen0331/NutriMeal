@@ -179,7 +179,7 @@ function checkErrorInfo(firstName, lastName, phoneNum, email, password) {
   if (!validEmail.test(email)) errors.push('Email is not valid')
   const validPassword= new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%&_])(?=.{9,})")
   if (!validPassword.test(password)) errors.push('Password is not valid')
-  if (email == password) errors.push('Password cannot be the same as email')
+  if (email.toLowerCase() == password.toLowerCase() || validEmail.test(password)) errors.push('Password cannot be similar to email')
   return errors
 }
 
