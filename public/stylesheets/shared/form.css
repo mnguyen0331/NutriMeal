@@ -113,7 +113,7 @@
 
 .profile-intro {
     margin-left: 40px;
-    margin-right: 100px;
+    margin-right: 40px;
 }
 
 .profile-upload {
@@ -188,6 +188,9 @@
     }
     .profile-intro {
         margin-right: 0;
+    }
+    .profile-btn {
+        margin-bottom: 100px;
     }
 }
 

@@ -66,7 +66,7 @@ const menu = [
   {
     id: 9,
     title: "turkey meatballs",
-    category: "shakes",
+    category: "lunch",
     price: 16.99,
     img: "./images/meals/item-9.jpeg",
     desc: ``,

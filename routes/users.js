@@ -99,7 +99,7 @@ router.post('/signup', async (req, res) => {
 // Let user update their information
 router.put('/:id/profile', async (req, res) => {
   const { firstName, lastName, phoneNum, email, streetAddress, city, zipcode, state, allergies, bio, profile } = req.body
-  let infoErrors = checkErrorInfo(firstName, lastName, phoneNum, email, "Password000@admin.com")
+  let infoErrors = checkErrorInfo(firstName, lastName, phoneNum, email, "Password000$$$")
   let addressErrors = []
   if (streetAddress == '' && city == '' && zipcode == '' && state == '') addressErrors = []
   else addressErrors = checkErrorAddress(streetAddress, city, zipcode, state)
